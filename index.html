@@ -4,267 +4,140 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Bean - Restaurant</title>
+  <title>The Bean Restaurant</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-
+  <!-- Header -->
   <header>
-    <div class="logo">
-      <img src="images/logo.png" alt="The Bean Logo">
-      <h1>The Bean</h1>
-    </div>
-    <nav>
+    <div class="logo">☕ The Bean Restaurant</div>
+    <nav id="nav-menu">
       <ul>
         <li><a href="#smoothies">Smoothies & Shakes</a></li>
         <li><a href="#coffee">Coffee & Tea</a></li>
         <li><a href="#boba">Boba Tea</a></li>
         <li><a href="#salads">Salads</a></li>
         <li><a href="#breakfast">Breakfast</a></li>
-        <li><a href="#specialties">Bean Specialties</a></li>
-        <li><a href="#plantbased">Plant-Based</a></li>
+        <li><a href="#beans">Bean Specialties</a></li>
+        <li><a href="#plant">Plant-Based</a></li>
         <li><a href="#quesadillas">Quesadillas</a></li>
         <li><a href="#reviews">Reviews</a></li>
       </ul>
     </nav>
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
   </header>
 
-  <main>
+  <!-- Smoothies Section -->
+  <section id="smoothies">
+    <h2>🥤 Smoothies & Shakes</h2>
+    <ul class="menu-list">
+      <li>Mango Smoothie <span>$4.99</span></li>
+      <li>Berry Blast <span>$5.49</span></li>
+      <li>Chocolate Shake <span>$4.79</span></li>
+    </ul>
+  </section>
 
-    <!-- SMOOTHIES & SHAKES -->
-    <section id="smoothies" class="menu-section">
-      <h2>SMOOTHIES & SHAKES</h2>
-      <ul class="menu-list">
-        <li><img src="images/smoothie1.png" alt="Strawberry Dream"> <span class="name">Strawberry Dream</span> -
-          Strawberry, banana, apple juice & nonfat yogurt <span class="price">Small $5.99 | Large $6.99</span></li>
-        <li><img src="images/smoothie2.png" alt="Blue Demon"> <span class="name">Blue Demon</span> - Pineapple juice,
-          blueberries, granola & nonfat yogurt <span class="price">Small $5.99 | Large $6.99</span></li>
-        <li><img src="images/smoothie3.png" alt="Tropical Smoother"> <span class="name">Tropical Smoother <span
-              class="green-symbol">♥</span></span> - Mango, peaches, banana & apple juice <span class="price">Small
-            $5.99 | Large $6.99</span></li>
-        <li><img src="images/smoothie4.png" alt="Berry Bomb"> <span class="name">Berry Bomb <span
-              class="green-symbol">♥</span></span> - Blueberries, raspberries, strawberries, mango & orange juice <span
-            class="price">Small $5.99 | Large $6.99</span></li>
-        <li><img src="images/smoothie5.png" alt="Summer Breeze"> <span class="name">Summer Breeze <span
-              class="green-symbol">♥</span></span> - Mango, strawberries, pineapple juice, apple juice, orange juice
-          <span class="price">Small $5.99 | Large $6.99</span>
-        </li>
-        <li><img src="images/smoothie6.png" alt="Almond Berry Swirl"> <span class="name">Almond Berry Swirl</span> -
-          Almond milk, honey, strawberries, raspberries & banana <span class="price">Small $5.99 | Large $6.99</span>
-        </li>
-        <li><img src="images/smoothie7.png" alt="Peaches Keen"> <span class="name">Peaches Keen</span> - Peaches, honey,
-          banana, apple juice & nonfat yogurt <span class="price">Small $5.99 | Large $6.99</span></li>
-        <li><img src="images/smoothie8.png" alt="Peaches & Green"> <span class="name">Peaches & Green</span> - Peaches,
-          spinach, banana, apple juice & nonfat yogurt <span class="price">Small $5.99 | Large $6.99</span></li>
-      </ul>
-    </section>
+  <!-- Ad Banner -->
+  <div class="ad-banner">Your Ad Here</div>
 
-    <div class="banner-ad">Your Promotion Here</div>
+  <!-- Coffee Section -->
+  <section id="coffee">
+    <h2>☕ Coffee & Tea</h2>
+    <ul class="menu-list">
+      <li>Espresso <span>$2.99</span></li>
+      <li>Latte <span>$3.99</span></li>
+      <li>Green Tea <span>$2.49</span></li>
+    </ul>
+  </section>
 
-    <!-- SHAKES -->
-    <section class="menu-section">
-      <h2>SHAKES</h2>
-      <ul class="menu-list">
-        <li><img src="images/shake1.png" alt="Funky Monkey"> <span class="name">Funky Monkey</span> - Peanut butter,
-          chocolate & banana blended with nonfat yogurt & milk</li>
-        <li><img src="images/shake2.png" alt="Milkshake"> <span class="name">Milkshake</span> - Vanilla or chocolate
-          syrup blended with milk and nonfat yogurt</li>
-        <li><img src="images/shake3.png" alt="Banana Blast"> <span class="name">Banana Blast</span> - Sweetened vanilla
-          shake with fresh banana</li>
-      </ul>
-    </section>
+  <!-- Ad Banner -->
+  <div class="ad-banner">Your Ad Here</div>
 
-    <div class="banner-ad">Your Promotion Here</div>
+  <!-- Boba Section -->
+  <section id="boba">
+    <h2>🧋 Boba Tea</h2>
+    <ul class="menu-list">
+      <li>Taro Boba <span>$4.99</span></li>
+      <li>Brown Sugar Boba <span>$5.49</span></li>
+    </ul>
+  </section>
 
-    <!-- COFFEE & TEA -->
-    <section id="coffee" class="menu-section">
-      <h2>COFFEE & TEA</h2>
-      <ul class="menu-list">
-        <li><span class="name">Bean Blend</span> - Little 12oz: $2.59 | Big 20oz: $3.39</li>
-        <li><span class="name">Cold Brew</span> - Little 12oz: $3.19 | Big 20oz: $4.19</li>
-        <li><span class="name">Hot or Iced Tea</span> - Organic Green, Moroccan mint, black forest & more. Little 12oz:
-          $2.79 | Big 20oz: $3.59</li>
-      </ul>
-    </section>
+  <!-- Ad Banner -->
+  <div class="ad-banner">Your Ad Here</div>
 
-    <div class="banner-ad">Your Promotion Here</div>
+  <!-- Salads -->
+  <section id="salads">
+    <h2>🥗 Salads</h2>
+    <ul class="menu-list">
+      <li>Caesar Salad <span>$6.99</span></li>
+      <li>Garden Fresh <span>$5.99</span></li>
+    </ul>
+  </section>
 
-    <!-- BOBA TEA -->
-    <section id="boba" class="menu-section">
-      <h2>BOBA TEA</h2>
-      <ul class="menu-list">
-        <li><img src="images/boba1.png" alt="Blood Orange Passion Burst"> <span class="name">Blood Orange Passion
-            Burst</span> - $6.99</li>
-        <li><img src="images/boba2.png" alt="Pandan Coco Twist"> <span class="name">Pandan Coco Twist</span> - $6.99
-        </li>
-        <li><img src="images/boba3.png" alt="Strawberry Matcha Magic"> <span class="name">Strawberry Matcha Magic</span>
-          - $6.99</li>
-        <li><img src="images/boba4.png" alt="Berry Hibiscus Boba"> <span class="name">Berry Hibiscus Boba</span> - $6.99
-        </li>
-        <li><img src="images/boba5.png" alt="Strawberry Lemonade Bliss"> <span class="name">Strawberry Lemonade
-            Bliss</span> - $6.99</li>
-        <li><img src="images/boba6.png" alt="Tropical Berry Bliss"> <span class="name">Tropical Berry Bliss</span> -
-          $6.99</li>
-      </ul>
-    </section>
+  <!-- Ad Banner -->
+  <div class="ad-banner">Your Ad Here</div>
 
-    <div class="banner-ad">Your Promotion Here</div>
+  <!-- Breakfast -->
+  <section id="breakfast">
+    <h2>🍳 Breakfast</h2>
+    <ul class="menu-list">
+      <li>Pancakes <span>$4.99</span></li>
+      <li>Omelette <span>$5.99</span></li>
+    </ul>
+  </section>
 
-    <!-- SALADS -->
-    <section id="salads" class="menu-section">
-      <h2>SALADS</h2>
-      <ul class="menu-list">
-        <li><span class="name">Cesar</span> - Parmesan cheese, croutons, romaine lettuce with caesar dressing $6.99</li>
-        <li><span class="name">Chicken Taco</span> - Taco-seasoned chicken strips, corn, black beans, onion, tomato,
-          cheddar over romaine lettuce with ranch salsa $8.29</li>
-        <li><span class="name">Urban Chopped</span> - Chopped chicken breast, egg whites, bacon, mozzarella, banana
-          peppers, tomato over romaine with honey mustard pesto $8.49</li>
-      </ul>
-    </section>
+  <!-- Ad Banner -->
+  <div class="ad-banner">Your Ad Here</div>
 
-    <div class="banner-ad">Your Promotion Here</div>
+  <!-- Bean Specialties -->
+  <section id="beans">
+    <h2>🌱 Bean Specialties</h2>
+    <ul class="menu-list">
+      <li>Chili Beans <span>$6.49</span></li>
+      <li>Mexican Black Beans <span>$5.99</span></li>
+    </ul>
+  </section>
 
-    <!-- BREAKFAST -->
-    <section id="breakfast" class="menu-section">
-      <h2>BREAKFAST ALL DAY</h2>
-      <ul class="menu-list">
-        <li><span class="name">Veggie Bagel <span class="green-symbol">🍃</span></span> - Cucumber, red onion, tomatoes
-          & cream cheese $4.99</li>
-        <li><span class="name">Breakfast Burrito <span class="green-symbol">🍃</span></span> - Taco-seasoned egg, hash
-          browns, red onion, black beans, tomatoes & cheddar $6.99</li>
-        <li><span class="name">Healthy Start Bagel</span> - Egg white omelet with spinach, tomatoes & swiss cheese $5.49
-        </li>
-        <li><span class="name">Avocado Toast <span class="green-symbol">♥</span></span> - Mashed avocado, tomato, red
-          onion, crushed peppers & cucumber $6.99</li>
-        <li><span class="name">Sunrise Bagel</span> - Seasoned egg/egg whites with meat & cheese $6.99</li>
-        <li><span class="name">Croissant Your Way</span> - Seasoned egg/egg whites with meat & cheese $6.99</li>
-        <li><span class="name">Bean Wrap</span> - Turkey sausage, egg, hash browns, red onion & cheddar $6.99</li>
-        <li><span class="name">Breakfast Quesadilla <span class="green-symbol">🍃</span></span> - Taco-seasoned eggs,
-          spinach, tomato, red onion, cheddar $6.99</li>
-        <li><span class="name">Toasted Bagel w/ Cream Cheese</span> - Plain, chive/onion, or vegetable cream cheese
-          $3.49</li>
-        <li><span class="name">Hash Brown Patty <span class="green-symbol">♥</span></span> - Add-on $1.19</li>
-        <li><span class="name">Gluten Free Bread</span> - Add-on $1.59</li>
-      </ul>
-    </section>
+  <!-- Ad Banner -->
+  <div class="ad-banner">Your Ad Here</div>
 
-    <div class="banner-ad">Your Promotion Here</div>
+  <!-- Plant-Based -->
+  <section id="plant">
+    <h2>🥦 Plant-Based</h2>
+    <ul class="menu-list">
+      <li>Vegan Wrap <span>$7.49</span></li>
+      <li>Tofu Bowl <span>$6.99</span></li>
+    </ul>
+  </section>
 
-    <!-- BEAN SPECIALTIES -->
-    <section id="specialties" class="menu-section">
-      <h2>BEAN SPECIALTIES</h2>
-      <ul class="menu-list">
-        <li><span class="name">Turkey Club</span> - Deli turkey, bacon, romaine, tomato & ranch on sourdough $8.49</li>
-        <li><span class="name">Grilled Cheese <span class="green-symbol">🍃</span></span> - Cheddar & swiss on toasted
-          sourdough $7.49</li>
-        <li><span class="name">Chicken Pesto Panini</span> - Chicken, mozzarella, spinach, tomatoes & basil pesto $8.99
-        </li>
-        <li><span class="name">BBQ Chicken Panini</span> - Chicken, mozzarella, onion with BBQ $8.99</li>
-        <li><span class="name">Pizza Bagel</span> - Pepperoni/salami, mozzarella, spinach & marinara $5.99</li>
-        <li><span class="name">Sicilian Layered Panini</span> - Salami, turkey, mozzarella, tomato, banana peppers &
-          basil pesto $8.99</li>
-        <li><span class="name">Gyros (HALAL)</span> - Romaine, tomato, onion & tzatziki sauce $8.99</li>
-      </ul>
-    </section>
+  <!-- Ad Banner -->
+  <div class="ad-banner">Your Ad Here</div>
 
-    <div class="banner-ad">Your Promotion Here</div>
+  <!-- Quesadillas -->
+  <section id="quesadillas">
+    <h2>🫔 Quesadillas</h2>
+    <ul class="menu-list">
+      <li>Cheese Quesadilla <span>$4.99</span></li>
+      <li>Chicken Quesadilla <span>$6.99</span></li>
+    </ul>
+  </section>
 
-    <!-- PLANT-BASED -->
-    <section id="plantbased" class="menu-section">
-      <h2>PLANT-BASED</h2>
-      <ul class="menu-list">
-        <li><span class="name">Torta-ly Vegan <span class="green-symbol">♥</span></span> - Mashed avocado, black beans,
-          romaine, tomato, red onion & vegan cheddar $7.99</li>
-        <li><span class="name">Potato And Spinach Burrito <span class="green-symbol">♥</span></span> - Hash browns,
-          spinach, black beans, red onion, tomatoes & vegan cheddar $7.99</li>
-        <li><span class="name">Vegan Sunrise Bagel <span class="green-symbol">♥</span></span> - JUST egg, vegan cheddar,
-          spinach, red onion, tomato $7.99</li>
-      </ul>
-    </section>
+  <!-- Ad Banner -->
+  <div class="ad-banner">Your Ad Here</div>
 
-    <div class="banner-ad">Your Promotion Here</div>
+  <!-- Customer Reviews -->
+  <section id="reviews">
+    <h2>💬 Customer Reviews</h2>
+    <form id="review-form">
+      <input type="text" id="reviewer-name" placeholder="Your Name" required>
+      <textarea id="review-text" placeholder="Your Review" required></textarea>
+      <button type="submit">Submit Review</button>
+    </form>
+    <div id="review-list"></div>
+  </section>
 
-    <!-- QUESADILLAS -->
-    <section id="quesadillas" class="menu-section">
-      <h2>QUESADILLAS</h2>
-      <ul class="menu-list">
-        <li><span class="name">Cheese <span class="green-symbol">🍃</span></span> - Mozzarella & cheddar in flour
-          tortilla $7.49</li>
-        <li><span class="name">Chicken</span> - Chicken & cheddar in flour tortilla $8.69</li>
-        <li><span class="name">Buffalo Chicken</span> - Chicken, hot sauce & cheddar in flour tortilla $8.69</li>
-        <li><span class="name">Spinach & Chicken</span> - Chicken, spinach, onion & cheddar in flour tortilla $8.69</li>
-        <li><span class="name">Hummus <span class="green-symbol">🍃</span></span> - Spinach, cucumber & onion in flour
-          tortilla $7.49</li>
-      </ul>
-    </section>
-
-    <div class="banner-ad">Your Promotion Here</div>
-
-    <!-- CUSTOMER REVIEWS -->
-    <section id="reviews" class="menu-section">
-      <h2>Customer Reviews</h2>
-
-      <div class="review-form">
-        <h3>Submit a Review</h3>
-        <input type="text" id="reviewer-name" placeholder="Your Name">
-        <textarea id="review-text" placeholder="Write your review here"></textarea>
-        <button onclick="addReview()">Submit Review</button>
-      </div>
-
-      <ul id="review-list" class="review-list"></ul>
-    </section>
-
-  </main>
-
-  <footer>
-    <p>The Bean, DePaul University Ray Meyer Fitness and Recreation Center, 2235 N Sheffield Ave, Chicago, IL 60614</p>
-    <p>Contact: +1 (773) 325-7357</p>
-    <p>Hours: Saturday-Sunday 10 AM–8 PM, Monday-Thursday 10 AM–8:30 PM, Friday 10 AM–8:30 PM</p>
-  </footer>
-
-  <script>
-    // Customer review system
-    const reviewList = document.getElementById('review-list');
-    function addReview() {
-      const name = document.getElementById('reviewer-name').value.trim();
-      const text = document.getElementById('review-text').value.trim();
-      if (!name || !text) return alert('Please enter both name and review.');
-
-      const li = document.createElement('li');
-      li.className = 'review-item';
-      li.innerHTML = `
-    <strong>${name}</strong>: ${text}
-    <ul class="reply-list"></ul>
-    <div class="reply-form">
-      <input type="text" placeholder="Your Name" class="reply-name">
-      <textarea placeholder="Write your reply" class="reply-text"></textarea>
-      <button onclick="addReply(this)">Reply</button>
-    </div>
-  `;
-      reviewList.prepend(li);
-      document.getElementById('reviewer-name').value = '';
-      document.getElementById('review-text').value = '';
-    }
-
-    function addReply(button) {
-      const li = button.closest('.review-item');
-      const nameInput = li.querySelector('.reply-name');
-      const textInput = li.querySelector('.reply-text');
-      const name = nameInput.value.trim();
-      const text = textInput.value.trim();
-      if (!name || !text) return alert('Please enter both name and reply.');
-
-      const replyUl = li.querySelector('.reply-list');
-      const replyLi = document.createElement('li');
-      replyLi.innerHTML = `<strong>${name}</strong>: ${text}`;
-      replyUl.appendChild(replyLi);
-
-      nameInput.value = '';
-      textInput.value = '';
-    }
-  </script>
-
+  <script src="script.js"></script>
 </body>
 
 </html>
