@@ -1,92 +1,32 @@
-function toggleMenu() {
-    const nav = document.getElementById("nav-menu");
-    nav.style.display = nav.style.display === "block" ? "none" : "block";
-}
-
-const form = document.getElementById("review-form");
-const reviewList = document.getElementById("review-list");
-
-form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const name = document.getElementById("reviewer-name").value;
-    const text = document.getElementById("review-text").value;
-
-    const reviewDiv = document.createElement("div");
-    reviewDiv.classList.add("review");
-    reviewDiv.innerHTML = `<strong>${name}</strong><p>${text}</p>`;
-
-    // Reply form
-    const replyForm = document.createElement("form");
-    replyForm.classList.add("reply-form");
-    replyForm.innerHTML = `
-      <input type="text" placeholder="Your Name" required>
-      <input type="text" placeholder="Your Reply" required>
-      <button type="submit">Reply</button>
-    `;
-    reviewDiv.appendChild(replyForm);
-
-    const replyList = document.createElement("div");
-    reviewDiv.appendChild(replyList);
-
-    replyForm.addEventListener("submit", (e) => {
-        e.preventDefault();
-        const replyName = replyForm.querySelector("input:nth-child(1)").value;
-        const replyText = replyForm.querySelector("input:nth-child(2)").value;
-
-        const replyDiv = document.createElement("div");
-        replyDiv.classList.add("reply");
-        replyDiv.innerHTML = `<strong>${replyName}</strong>: ${replyText}`;
-        replyList.appendChild(replyDiv);
-
-        replyForm.reset();
-    });
-
-    reviewList.appendChild(reviewDiv);
-    form.reset();
+// Toggle mobile menu
+document.getElementById('menu-toggle').addEventListener('click', () => {
+    document.getElementById('nav-links').classList.toggle('show');
 });
-function toggleMenu() {
-    const nav = document.getElementById("nav-menu");
-    nav.style.display = nav.style.display === "block" ? "none" : "block";
-}
 
-const form = document.getElementById("review-form");
-const reviewList = document.getElementById("review-list");
+// Load existing reviews
+const reviewsList = document.getElementById('reviews-list');
+let reviews = JSON.parse(localStorage.getItem('reviews')) || [];
 
-form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const name = document.getElementById("reviewer-name").value;
-    const text = document.getElementById("review-text").value;
-
-    const reviewDiv = document.createElement("div");
-    reviewDiv.classList.add("review");
-    reviewDiv.innerHTML = `<strong>${name}</strong><p>${text}</p>`;
-
-    // Reply form
-    const replyForm = document.createElement("form");
-    replyForm.classList.add("reply-form");
-    replyForm.innerHTML = `
-    <input type="text" placeholder="Your Name" required>
-    <input type="text" placeholder="Your Reply" required>
-    <button type="submit">Reply</button>
-  `;
-    reviewDiv.appendChild(replyForm);
-
-    const replyList = document.createElement("div");
-    reviewDiv.appendChild(replyList);
-
-    replyForm.addEventListener("submit", (e) => {
-        e.preventDefault();
-        const replyName = replyForm.querySelector("input:nth-child(1)").value;
-        const replyText = replyForm.querySelector("input:nth-child(2)").value;
-
-        const replyDiv = document.createElement("div");
-        replyDiv.classList.add("reply");
-        replyDiv.innerHTML = `<strong>${replyName}</strong>: ${replyText}`;
-        replyList.appendChild(replyDiv);
-
-        replyForm.reset();
+function displayReviews() {
+    reviewsList.innerHTML = '';
+    reviews.forEach(r => {
+        const div = document.createElement('div');
+        div.className = 'review';
+        div.innerHTML = `<strong>${r.name}</strong><p>${r.text}</p>`;
+        reviewsList.appendChild(div);
     });
+}
+displayReviews();
 
-    reviewList.appendChild(reviewDiv);
-    form.reset();
+// Handle review submission
+document.getElementById('review-form').addEventListener('submit', e => {
+    e.preventDefault();
+    const name = document.getElementById('reviewer-name').value;
+    const text = document.getElementById('review-text').value;
+    if (name && text) {
+        reviews.push({ name, text });
+        localStorage.setItem('reviews', JSON.stringify(reviews));
+        displayReviews();
+        e.target.reset();
+    }
 });

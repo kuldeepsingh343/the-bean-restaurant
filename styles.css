@@ -1,23 +1,21 @@
 body {
-    margin: 0;
     font-family: Arial, sans-serif;
-    background: #fafafa;
+    margin: 0;
+    padding: 0;
+    background: #fff;
     color: #333;
 }
 
 header {
-    background: #2d6a4f;
-    color: white;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 12px 20px;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+    background: #333;
+    color: #fff;
+    padding: 10px 20px;
 }
 
-.logo {
+header .logo {
     font-size: 20px;
     font-weight: bold;
 }
@@ -25,140 +23,142 @@ header {
 nav ul {
     list-style: none;
     display: flex;
-    gap: 15px;
     margin: 0;
     padding: 0;
 }
 
+nav ul li {
+    margin-left: 20px;
+}
+
 nav ul li a {
-    color: white;
+    color: #fff;
     text-decoration: none;
-    padding: 6px 12px;
-    transition: background 0.3s;
+    transition: color 0.3s;
 }
 
 nav ul li a:hover {
-    background: #40916c;
-    border-radius: 5px;
+    color: #ff9800;
 }
 
-.hamburger {
+.menu-toggle {
     display: none;
-    font-size: 24px;
     cursor: pointer;
-}
-
-@media (max-width: 768px) {
-    nav {
-        display: none;
-        position: absolute;
-        top: 60px;
-        left: 0;
-        width: 100%;
-        background: #2d6a4f;
-    }
-
-    nav ul {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .hamburger {
-        display: block;
-    }
+    font-size: 24px;
 }
 
 section {
-    padding: 40px 20px;
-    text-align: center;
+    padding: 20px;
+}
+
+h2 {
+    border-bottom: 2px solid #eee;
+    padding-bottom: 5px;
 }
 
 .menu-list {
     list-style: none;
     padding: 0;
-    margin: 0 auto;
-    max-width: 500px;
-    text-align: left;
 }
 
 .menu-list li {
-    display: flex;
-    justify-content: space-between;
-    padding: 12px;
-    margin: 6px 0;
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    margin-bottom: 8px;
+    background: #f9f9f9;
+    border-radius: 5px;
     transition: transform 0.2s;
 }
 
 .menu-list li:hover {
-    transform: translateX(5px);
-    background: #f0f9f4;
+    transform: scale(1.02);
+    background: #f1f1f1;
+}
+
+.price {
+    float: right;
+    color: #555;
+}
+
+.vegan {
+    color: green;
+}
+
+.veg {
+    color: green;
 }
 
 .ad-banner {
-    background: #d8f3dc;
+    background: #eee;
     text-align: center;
     padding: 10px;
+    margin: 10px 0;
     font-size: 14px;
-    margin: 10px auto;
-    border-radius: 6px;
-    max-width: 700px;
+    color: #555;
 }
 
-form {
+#reviews form {
     display: flex;
     flex-direction: column;
-    max-width: 400px;
-    margin: auto;
+    margin-bottom: 20px;
 }
 
-form input,
-form textarea {
-    margin: 8px 0;
+#reviews input,
+#reviews textarea {
+    margin: 5px 0;
     padding: 10px;
     border: 1px solid #ccc;
-    border-radius: 6px;
-    width: 100%;
+    border-radius: 5px;
 }
 
-form button {
-    background: #2d6a4f;
-    color: white;
+#reviews button {
+    background: #333;
+    color: #fff;
     border: none;
-    padding: 12px;
-    border-radius: 6px;
+    padding: 10px;
     cursor: pointer;
+    border-radius: 5px;
 }
 
-#review-list {
+#reviews button:hover {
+    background: #ff9800;
+}
+
+#reviews-list .review {
+    border-bottom: 1px solid #eee;
+    padding: 10px 0;
+}
+
+footer {
+    background: #333;
+    color: #fff;
+    text-align: center;
+    padding: 15px;
     margin-top: 20px;
-    text-align: left;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
 }
 
-.review {
-    background: #fff;
-    padding: 12px;
-    margin: 8px 0;
-    border-radius: 8px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-}
+/* Responsive */
+@media (max-width: 768px) {
+    nav ul {
+        display: none;
+        flex-direction: column;
+        background: #333;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 200px;
+    }
 
-.review strong {
-    color: #2d6a4f;
-}
+    nav ul.show {
+        display: flex;
+    }
 
-.reply-form {
-    margin-top: 10px;
-}
+    .menu-toggle {
+        display: block;
+    }
 
-.reply {
-    margin-left: 20px;
-    background: #f8f9fa;
-    padding: 8px;
-    border-radius: 6px;
+    .price {
+        float: none;
+        display: block;
+        margin-top: 5px;
+    }
 }
