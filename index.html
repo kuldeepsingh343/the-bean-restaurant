@@ -2,149 +2,142 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Bean - Restaurant</title>
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Bean Restaurant</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
   <!-- Header -->
   <header>
-    <div class="logo">☕ The Bean</div>
-    <nav>
-      <ul id="nav-links">
+    <div class="logo">The Bean Restaurant</div>
+    <nav id="navbar">
+      <ul>
         <li><a href="#smoothies">Smoothies & Shakes</a></li>
         <li><a href="#coffee">Coffee & Tea</a></li>
         <li><a href="#boba">Boba Tea</a></li>
         <li><a href="#salads">Salads</a></li>
         <li><a href="#breakfast">Breakfast</a></li>
-        <li><a href="#specialties">Bean Specialties</a></li>
-        <li><a href="#plantbased">Plant-Based</a></li>
+        <li><a href="#bean">Bean Specialties</a></li>
+        <li><a href="#plant">Plant-Based</a></li>
         <li><a href="#quesadillas">Quesadillas</a></li>
         <li><a href="#reviews">Reviews</a></li>
       </ul>
-      <div class="menu-toggle" id="menu-toggle">☰</div>
     </nav>
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
   </header>
 
-  <!-- Smoothies -->
+  <!-- Smoothies Section -->
   <section id="smoothies">
     <h2>Smoothies & Shakes</h2>
-    <ul class="menu-list">
-      <li><strong>Strawberry Dream</strong> – Strawberry, banana, apple juice & yogurt <span class="price">Small $5.99 |
-          Large $6.99</span></li>
-      <li><strong>Blue Demon</strong> – Pineapple juice, blueberries, granola & yogurt <span class="price">Small $5.99 |
-          Large $6.99</span></li>
-      <li><strong>Tropical Smoother <span class="vegan">♥</span></strong> – Mango, peaches, banana & apple juice <span
-          class="price">Small $5.99 | Large $6.99</span></li>
-      <li><strong>Berry Bomb <span class="vegan">♥</span></strong> – Blueberries, raspberries, strawberries, mango &
-        orange juice <span class="price">Small $5.99 | Large $6.99</span></li>
+    <ul class="menu-list with-images">
+      <li><img src="images/berry_blast.jpg" alt="Berry Blast" /> Berry Blast</li>
+      <li><img src="images/mango_mania.jpg" alt="Mango Mania" /> Mango Mania</li>
+      <li><img src="images/green_goddess.jpg" alt="Green Goddess" /> Green Goddess</li>
+      <li><img src="images/summer_breeze.jpg" alt="Summer Breeze" /> Summer Breeze</li>
     </ul>
   </section>
 
-  <div class="ad-banner">[ Advertisement Space ]</div>
+  <!-- Banner -->
+  <div class="ad-banner">[Your Ad Here]</div>
 
-  <!-- Coffee -->
+  <!-- Coffee Section -->
   <section id="coffee">
     <h2>Coffee & Tea</h2>
     <ul class="menu-list">
-      <li><strong>Americano</strong> <span class="price">$3.49</span></li>
-      <li><strong>Cappuccino</strong> <span class="price">$4.29</span></li>
-      <li><strong>Chai Latte</strong> <span class="price">$4.99</span></li>
+      <li>Espresso</li>
+      <li>Latte</li>
+      <li>Mocha</li>
+      <li>Herbal Tea</li>
     </ul>
   </section>
 
-  <div class="ad-banner">[ Advertisement Space ]</div>
+  <div class="ad-banner">[Your Ad Here]</div>
 
-  <!-- Boba -->
+  <!-- Boba Tea -->
   <section id="boba">
     <h2>Boba Tea</h2>
     <ul class="menu-list">
-      <li><strong>Blood Orange Passion Burst</strong> <span class="price">$6.99</span></li>
-      <li><strong>Pandan Coco Twist</strong> <span class="price">$6.99</span></li>
-      <li><strong>Strawberry Matcha Magic</strong> <span class="price">$6.99</span></li>
-      <li><strong>Berry Hibiscus Boba</strong> <span class="price">$6.99</span></li>
+      <li>Classic Milk Tea</li>
+      <li>Taro Milk Tea</li>
+      <li>Matcha Boba</li>
+      <li>Strawberry Boba</li>
     </ul>
   </section>
 
-  <div class="ad-banner">[ Advertisement Space ]</div>
+  <div class="ad-banner">[Your Ad Here]</div>
 
   <!-- Salads -->
   <section id="salads">
     <h2>Salads</h2>
     <ul class="menu-list">
-      <li><strong>Greek Salad</strong> <span class="price">$7.99</span></li>
-      <li><strong>Caesar Salad</strong> <span class="price">$8.49</span></li>
+      <li>Caesar Salad</li>
+      <li>Greek Salad</li>
+      <li>Garden Fresh Salad</li>
     </ul>
   </section>
 
-  <div class="ad-banner">[ Advertisement Space ]</div>
+  <div class="ad-banner">[Your Ad Here]</div>
 
   <!-- Breakfast -->
   <section id="breakfast">
     <h2>Breakfast</h2>
     <ul class="menu-list">
-      <li><strong>Veggie Bagel <span class="veg">🍃</span></strong> <span class="price">$5.49</span></li>
-      <li><strong>Breakfast Burrito <span class="veg">🍃</span></strong> <span class="price">$6.99</span></li>
-      <li><strong>Breakfast Quesadilla <span class="veg">🍃</span></strong> <span class="price">$6.99</span></li>
+      <li>Pancakes</li>
+      <li>Avocado Toast</li>
+      <li>Bagel with Cream Cheese</li>
     </ul>
   </section>
 
-  <div class="ad-banner">[ Advertisement Space ]</div>
+  <div class="ad-banner">[Your Ad Here]</div>
 
   <!-- Bean Specialties -->
-  <section id="specialties">
+  <section id="bean">
     <h2>Bean Specialties</h2>
     <ul class="menu-list">
-      <li><strong>Signature Latte</strong> <span class="price">$5.99</span></li>
-      <li><strong>Mocha Blast</strong> <span class="price">$5.49</span></li>
+      <li>Chili Bean Bowl</li>
+      <li>Spicy Black Beans</li>
+      <li>Bean Burrito</li>
     </ul>
   </section>
 
-  <div class="ad-banner">[ Advertisement Space ]</div>
+  <div class="ad-banner">[Your Ad Here]</div>
 
   <!-- Plant Based -->
-  <section id="plantbased">
+  <section id="plant">
     <h2>Plant-Based</h2>
     <ul class="menu-list">
-      <li><strong>Summer Breeze <span class="vegan">♥</span></strong> <span class="price">$6.99</span></li>
-      <li><strong>Torta-ly Vegan <span class="vegan">♥</span></strong> <span class="price">$7.99</span></li>
+      <li>Vegan Wrap</li>
+      <li>Tofu Stir Fry</li>
+      <li>Plant Power Bowl</li>
     </ul>
   </section>
 
-  <div class="ad-banner">[ Advertisement Space ]</div>
+  <div class="ad-banner">[Your Ad Here]</div>
 
   <!-- Quesadillas -->
   <section id="quesadillas">
     <h2>Quesadillas</h2>
     <ul class="menu-list">
-      <li><strong>Grilled Cheese <span class="veg">🍃</span></strong> <span class="price">$5.99</span></li>
-      <li><strong>Cheese Quesadilla <span class="veg">🍃</span></strong> <span class="price">$5.49</span></li>
-      <li><strong>Hummus Quesadilla <span class="veg">🍃</span></strong> <span class="price">$6.49</span></li>
+      <li>Cheese Quesadilla</li>
+      <li>Veggie Quesadilla</li>
+      <li>Spicy Bean Quesadilla</li>
     </ul>
   </section>
 
-  <div class="ad-banner">[ Advertisement Space ]</div>
+  <div class="ad-banner">[Your Ad Here]</div>
 
   <!-- Reviews -->
   <section id="reviews">
     <h2>Customer Reviews</h2>
-    <form id="review-form">
-      <input type="text" id="reviewer-name" placeholder="Your name" required>
-      <textarea id="review-text" placeholder="Write your review..." required></textarea>
+    <form id="reviewForm">
+      <input type="text" id="reviewerName" placeholder="Your Name" required />
+      <textarea id="reviewText" placeholder="Write your review..." required></textarea>
       <button type="submit">Submit Review</button>
     </form>
-    <div id="reviews-list"></div>
+    <div id="reviewsList"></div>
   </section>
-
-  <!-- Footer -->
-  <footer>
-    <p>The Bean, DePaul University Ray Meyer Fitness and Recreation Center,<br>
-      2235 N Sheffield Ave, Chicago, IL 60614</p>
-    <p>Contact: +1 (773) 325-7357</p>
-    <p>Hours: Mon–Fri 10 AM–8:30 PM | Sat–Sun 10 AM–8 PM</p>
-  </footer>
 
   <script src="script.js"></script>
 </body>
