@@ -6,6 +6,7 @@ body {
 /* Style for active nav link */
 .nav-link-active {
     color: #4ade80;
+    /* A vibrant green */
     font-weight: 700;
     position: relative;
 }
@@ -32,6 +33,7 @@ body {
 .halal::after {
     content: 'HALAL';
     background-color: #ef4444;
+    /* Red */
     color: white;
     padding: 2px 6px;
     border-radius: 4px;
@@ -54,6 +56,7 @@ body {
     left: 50%;
     transform: translateX(-50%);
     background-color: #111827;
+    /* gray-900 */
     color: #fff;
     padding: 0.25rem 0.75rem;
     border-radius: 0.375rem;
@@ -95,19 +98,23 @@ body {
     color: #f59e0b;
 }
 
-/* Ad container */
 .ad-container {
     max-width: 728px;
+    /* Standard leaderboard ad size */
     min-height: 90px;
     margin: 4rem auto;
+    /* 64px top/bottom margin, centered horizontally */
     padding: 1rem;
     border: 1px dashed #cbd5e1;
+    /* gray-300 */
     background-color: #f1f5f9;
+    /* gray-100 */
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
     color: #64748b;
+    /* gray-500 */
     font-size: 0.875rem;
     border-radius: 0.5rem;
 }
@@ -115,6 +122,7 @@ body {
 @media (max-width: 768px) {
     .ad-container {
         max-width: 300px;
+        /* Standard mobile banner size */
         min-height: 50px;
     }
 }
