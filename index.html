@@ -137,23 +137,7 @@
       </div>
     </section>
 
-    <div class="ad-container">
-      <div>
-        <p class="font-semibold">
-          <script type="text/javascript">
-            atOptions = {
-              'key': '485b7deb3a07c94ab170006afb05b845',
-              'format': 'iframe',
-              'height': 250,
-              'width': 300,
-              'params': {}
-            };
-          </script>
-          <script type="text/javascript"
-            src="//www.highperformanceformat.com/485b7deb3a07c94ab170006afb05b845/invoke.js"></script>
-        </p>
-      </div>
-    </div>
+
 
     <!-- Section: COFFEE + TEA -->
     <section id="coffee" class="mb-16 scroll-mt-24">
@@ -174,23 +158,7 @@
       </div>
     </section>
 
-    <div class="ad-container">
-      <div>
-        <p class="font-semibold">
-          <script type="text/javascript">
-            atOptions = {
-              'key': '485b7deb3a07c94ab170006afb05b845',
-              'format': 'iframe',
-              'height': 250,
-              'width': 300,
-              'params': {}
-            };
-          </script>
-          <script type="text/javascript"
-            src="//www.highperformanceformat.com/485b7deb3a07c94ab170006afb05b845/invoke.js"></script>
-        </p>
-      </div>
-    </div>
+
 
     <!-- Section: Boba Tea -->
     <section id="boba" class="mb-16 scroll-mt-24">
@@ -223,23 +191,7 @@
       </div>
     </section>
 
-    <div class="ad-container">
-      <div>
-        <p class="font-semibold">
-          <script type="text/javascript">
-            atOptions = {
-              'key': '485b7deb3a07c94ab170006afb05b845',
-              'format': 'iframe',
-              'height': 250,
-              'width': 300,
-              'params': {}
-            };
-          </script>
-          <script type="text/javascript"
-            src="//www.highperformanceformat.com/485b7deb3a07c94ab170006afb05b845/invoke.js"></script>
-        </p>
-      </div>
-    </div>
+
 
     <!-- Section: BEAN SPECIALTIES -->
     <section id="specialties" class="mb-16 scroll-mt-24">
@@ -281,23 +233,7 @@
       </div>
     </section>
 
-    <div class="ad-container">
-      <div>
-        <p class="font-semibold">
-          <script type="text/javascript">
-            atOptions = {
-              'key': '485b7deb3a07c94ab170006afb05b845',
-              'format': 'iframe',
-              'height': 250,
-              'width': 300,
-              'params': {}
-            };
-          </script>
-          <script type="text/javascript"
-            src="//www.highperformanceformat.com/485b7deb3a07c94ab170006afb05b845/invoke.js"></script>
-        </p>
-      </div>
-    </div>
+
 
     <!-- Section: PLANT BASED -->
     <section id="plant-based" class="mb-16 scroll-mt-24">
@@ -322,23 +258,7 @@
       </div>
     </section>
 
-    <div class="ad-container">
-      <div>
-        <p class="font-semibold">
-          <script type="text/javascript">
-            atOptions = {
-              'key': '485b7deb3a07c94ab170006afb05b845',
-              'format': 'iframe',
-              'height': 250,
-              'width': 300,
-              'params': {}
-            };
-          </script>
-          <script type="text/javascript"
-            src="//www.highperformanceformat.com/485b7deb3a07c94ab170006afb05b845/invoke.js"></script>
-        </p>
-      </div>
-    </div>
+
 
     <!-- Section: QUESADILLAS -->
     <section id="quesadillas" class="mb-16 scroll-mt-24">
@@ -368,23 +288,7 @@
       </div>
     </section>
 
-    <div class="ad-container">
-      <div>
-        <p class="font-semibold">
-          <script type="text/javascript">
-            atOptions = {
-              'key': '485b7deb3a07c94ab170006afb05b845',
-              'format': 'iframe',
-              'height': 250,
-              'width': 300,
-              'params': {}
-            };
-          </script>
-          <script type="text/javascript"
-            src="//www.highperformanceformat.com/485b7deb3a07c94ab170006afb05b845/invoke.js"></script>
-        </p>
-      </div>
-    </div>
+
 
     <!-- Section: SALADS -->
     <section id="salads" class="mb-16 scroll-mt-24">
@@ -552,23 +456,7 @@
       </div>
     </section>
 
-    <div class="ad-container">
-      <div>
-        <p class="font-semibold">
-          <script type="text/javascript">
-            atOptions = {
-              'key': '485b7deb3a07c94ab170006afb05b845',
-              'format': 'iframe',
-              'height': 250,
-              'width': 300,
-              'params': {}
-            };
-          </script>
-          <script type="text/javascript"
-            src="//www.highperformanceformat.com/485b7deb3a07c94ab170006afb05b845/invoke.js"></script>
-        </p>
-      </div>
-    </div>
+
 
     <!-- Section: Customer Reviews -->
     <section id="reviews" class="mb-16 scroll-mt-24">
@@ -640,6 +528,31 @@
       <p class="mt-4 font-semibold">Contact: (773) 325-4555</p>
     </div>
   </footer>
+  <!-- Firebase SDKs -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+    import { getFirestore, collection, onSnapshot, addDoc, doc, updateDoc, serverTimestamp, query, orderBy } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+    // This configuration paste from firebase website
+    const firebaseConfig = {
+      apiKey: "AIzaSyDDVRldSnkvXdFt7Q4ibhUgg_5pZctH1oQ",
+      authDomain: "the-bean-reviews-366e8.firebaseapp.com",
+      projectId: "the-bean-reviews-366e8",
+      storageBucket: "the-bean-reviews-366e8.appspot.com",
+      messagingSenderId: "892550821737",
+      appId: "1:892550821737:web:6c4fb2806933c931bc2ff8"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    // Make the database instance and Firestore functions available to your script.js file
+    window.db = db;
+    window.firebase = {
+      firestore: { collection, onSnapshot, addDoc, doc, updateDoc, serverTimestamp, query, orderBy }
+    };
+  </script>
 
   <script src="script.js" defer></script>
 </body>
