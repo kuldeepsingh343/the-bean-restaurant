@@ -40,7 +40,7 @@ Originally hosted on **GitHub Pages**, it was later moved to **Netlify** for a s
 *Displays all categories — smoothies, shakes, boba tea, and more, with vegetarian and vegan indicators.*
 
 ### 💬 Feedback Section
-![Feedback Preview](images/feedback.png)  
+![Feedback Preview](images/review.png)  
 *Allows customers to share their reviews, powered by Google Firebase.*
 
 *(Tip: Store your images inside an `/images` folder in your repository to display them correctly.)*
