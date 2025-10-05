@@ -1,5 +1,7 @@
 # 🍽️ The Bean Restaurant Website
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE.md)
+
 This is a **fully responsive and professional restaurant website** developed for **The Bean**, located inside **DePaul University’s Gym**.  
 Created and designed by **Kuldeep Singh**, voluntarily, using an **Agile development approach**.  
 
@@ -85,18 +87,18 @@ This project enhanced both my **technical skills** and **client-facing communica
 ## 👨‍💻 Author
 **Kuldeep Singh**  
 🎓 Master of Information Systems, DePaul University  
-🔗 [GitHub Profile](https://github.com/kuldeepsingh343)  
+🔗 [GitHub Profile](https://github.com/kuldeepsingh343) | [LinkedIn Profile](https://www.linkedin.com/in/kuldeepsingh343/)  
 📅 Project Completed: **October 2, 2025**
 
 ---
 
 ## 📜 License
-This project is licensed under the **MIT License** — see the [LICENSE](./LICENSE) file for details.  
+This project is licensed under the **MIT License**.  
+[Click here to view the full MIT License](./LICENSE.md)  
 
 ---
 
 ## 💖 Acknowledgments
 I would like to express my sincere gratitude to:  
 - **The Bean Restaurant** owner and team for trusting me with this project and providing valuable feedback during development.  
-- **Google Gemini** for assisting in brainstorming design ideas, UI/UX improvements, and optimization suggestions.  
-
+- **Google Gemini** for assisting in brainstorming design ideas, UI/UX improvements, and optimization suggestions.
