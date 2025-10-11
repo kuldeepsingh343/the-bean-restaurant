@@ -1,12 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     // --- Firebase Setup ---
-    // Note: db and firestore functions are initialized in index.html and attached to the window object
     if (!window.db || !window.firebase?.firestore) {
-        console.error("Firebase is not initialized. Make sure you have pasted your firebaseConfig in index.html and that all Firebase scripts are loaded.");
-        const reviewsContainer = document.getElementById('reviews-container');
-        if (reviewsContainer) {
-            reviewsContainer.innerHTML = '<p class="text-center text-red-500 font-bold">Error: Could not connect to the review database. Please contact the site administrator.</p>';
-        }
+        console.error("Firebase is not initialized correctly.");
         return;
     }
     const { db } = window;
@@ -26,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const summarizeBtn = document.getElementById('summarize-btn');
     const summaryContainer = document.getElementById('summary-container');
 
-    let allReviews = []; // Local cache of reviews from the database
+    let allReviews = [];
 
     // --- Mobile Menu Logic ---
     if (menuBtn) {
@@ -38,6 +33,108 @@ document.addEventListener('DOMContentLoaded', () => {
         link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
     });
 
+    // --- Image Slider Logic (CORRECTED) ---
+    function initializeSliders() {
+        document.querySelectorAll('.image-slider').forEach(slider => {
+            const slidesContainer = slider.querySelector('.slider-slides');
+            const dotsContainer = slider.querySelector('.slider-dots');
+            const images = slidesContainer.querySelectorAll('img');
+            const imageCount = images.length;
+
+            if (imageCount <= 1) return;
+
+            // --- Create Dots ---
+            dotsContainer.innerHTML = ''; // Clear any existing dots
+            for (let i = 0; i < imageCount; i++) {
+                const dot = document.createElement('span');
+                dot.classList.add('slider-dot');
+                if (i === 0) dot.classList.add('active');
+                dot.addEventListener('click', () => {
+                    goToSlide(i, true); // Go to slide with transition
+                });
+                dotsContainer.appendChild(dot);
+            }
+            const dots = dotsContainer.querySelectorAll('.slider-dot');
+
+            let currentIndex = 0;
+            let startX = 0;
+            let currentTranslate = 0;
+            let prevTranslate = 0;
+            let isDragging = false;
+            let animationFrameId;
+
+            function goToSlide(index, withTransition = false) {
+                if (withTransition) slidesContainer.style.transition = 'transform 0.5s ease-in-out';
+                currentTranslate = -index * slider.offsetWidth;
+                prevTranslate = currentTranslate;
+                slidesContainer.style.transform = `translateX(${currentTranslate}px)`;
+
+                dots.forEach(d => d.classList.remove('active'));
+                if (dots[index]) dots[index].classList.add('active');
+                currentIndex = index;
+            }
+
+            function dragStart(e) {
+                isDragging = true;
+                startX = getPositionX(e);
+                animationFrameId = requestAnimationFrame(animationLoop);
+                slidesContainer.style.transition = 'none'; // Disable transition while dragging
+                slider.classList.add('grabbing');
+            }
+
+            function drag(e) {
+                if (isDragging) {
+                    const currentPosition = getPositionX(e);
+                    currentTranslate = prevTranslate + currentPosition - startX;
+                }
+            }
+
+            function dragEnd(e) {
+                if (!isDragging) return;
+                cancelAnimationFrame(animationFrameId);
+                isDragging = false;
+                const movedBy = currentTranslate - prevTranslate;
+                const threshold = slider.offsetWidth / 4;
+
+                if (movedBy < -threshold && currentIndex < imageCount - 1) {
+                    currentIndex++;
+                }
+                if (movedBy > threshold && currentIndex > 0) {
+                    currentIndex--;
+                }
+
+                goToSlide(currentIndex, true);
+                slider.classList.remove('grabbing');
+            }
+
+            function getPositionX(e) {
+                return e.type.includes('mouse') ? e.pageX : e.touches[0].clientX;
+            }
+
+            function animationLoop() {
+                if (isDragging) {
+                    slidesContainer.style.transform = `translateX(${currentTranslate}px)`;
+                    requestAnimationFrame(animationLoop);
+                }
+            }
+
+            // Event Listeners
+            slider.addEventListener('mousedown', dragStart);
+            slider.addEventListener('mouseup', dragEnd);
+            slider.addEventListener('mouseleave', dragEnd);
+            slider.addEventListener('mousemove', drag);
+            slider.addEventListener('touchstart', dragStart, { passive: true });
+            slider.addEventListener('touchend', dragEnd);
+            slider.addEventListener('touchmove', drag, { passive: true });
+
+            // Prevent default drag behavior on images
+            images.forEach(img => img.addEventListener('dragstart', (e) => e.preventDefault()));
+        });
+    }
+
+    initializeSliders();
+
+
     // --- Gemini API Call ---
     async function callGeminiAPI(prompt, retries = 3, delay = 1000) {
         const payload = { contents: [{ parts: [{ text: prompt }] }] };
@@ -48,7 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 body: JSON.stringify(payload)
             });
             if (!response.ok) {
-                if (response.status === 429 && retries > 0) { // Exponential backoff for rate limiting
+                if (response.status === 429 && retries > 0) {
                     await new Promise(resolve => setTimeout(resolve, delay));
                     return callGeminiAPI(prompt, retries - 1, delay * 2);
                 }
@@ -115,10 +212,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!reviewSummary) return;
         if (allReviews.length === 0) {
             reviewSummary.innerHTML = '<p class="text-gray-500">No reviews yet to generate a summary.</p>';
-            summarizeBtn.disabled = true;
+            if (summarizeBtn) summarizeBtn.disabled = true;
             return;
         }
-        summarizeBtn.disabled = false;
+        if (summarizeBtn) summarizeBtn.disabled = false;
         const ratingCounts = { 5: 0, 4: 0, 3: 0, 2: 0, 1: 0 };
         let totalRatings = 0;
         allReviews.forEach(review => {
@@ -148,7 +245,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Event Listeners & Database Interaction ---
 
-    // 1. LISTEN for real-time updates from Firestore
     try {
         const q = query(reviewsCollection, orderBy("createdAt", "desc"));
         onSnapshot(q, (snapshot) => {
@@ -156,24 +252,25 @@ document.addEventListener('DOMContentLoaded', () => {
             renderReviews();
         }, (error) => {
             console.error("Error fetching reviews:", error);
-            reviewsContainer.innerHTML = '<p class="text-center text-red-500 font-bold">Could not load reviews. Please check your connection or security rules.</p>';
+            if (reviewsContainer) reviewsContainer.innerHTML = '<p class="text-center text-red-500 font-bold">Could not load reviews. Please check your connection or security rules.</p>';
         });
     } catch (error) {
         console.error("Firestore query failed:", error);
-        reviewsContainer.innerHTML = '<p class="text-center text-red-500 font-bold">There was an error setting up the reviews listener.</p>';
+        if (reviewsContainer) reviewsContainer.innerHTML = '<p class="text-center text-red-500 font-bold">There was an error setting up the reviews listener.</p>';
     }
 
 
-    // 2. SUBMIT a new review to Firestore
     if (reviewForm) {
         reviewForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             const submitButton = reviewForm.querySelector('button[type="submit"]');
             const ratingInput = document.querySelector('input[name="rating"]:checked');
+
             if (!ratingInput) {
                 alert("Please select a star rating.");
                 return;
             }
+
             submitButton.disabled = true;
             submitButton.textContent = "Submitting...";
 
@@ -188,10 +285,9 @@ document.addEventListener('DOMContentLoaded', () => {
             try {
                 await addDoc(reviewsCollection, newReview);
                 reviewForm.reset();
-                document.querySelectorAll('input[name="rating"]').forEach(r => r.checked = false);
             } catch (error) {
                 console.error("Error adding review: ", error);
-                alert("Sorry, there was an error submitting your review.");
+                alert("Sorry, there was an error submitting your review. It might be a permissions issue. Please check your security rules.");
             } finally {
                 submitButton.disabled = false;
                 submitButton.textContent = "Submit Review";
@@ -199,7 +295,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 3. ADD a reply to an existing review in Firestore
     function attachReplyHandlers() {
         document.querySelectorAll('.reply-form').forEach(form => {
             if (form.dataset.listener) return;
@@ -224,10 +319,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     try {
                         await updateDoc(reviewRef, { replies: updatedReplies });
-                        // No need to reset form, onSnapshot will re-render
                     } catch (error) {
                         console.error("Error adding reply: ", error);
-                        alert("Sorry, couldn't add your reply.");
+                        alert("Sorry, couldn't add your reply. This feature may be restricted.");
                         replyButton.disabled = false;
                     }
                 }
@@ -235,7 +329,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- AI Feature Handlers (Remain mostly the same) ---
     function attachAIFeatureHandlers() {
         document.querySelectorAll('.suggest-reply-btn').forEach(button => {
             if (button.dataset.listenerAttached) return;
@@ -252,32 +345,32 @@ document.addEventListener('DOMContentLoaded', () => {
                 const prompt = `A customer left the following review for "The Bean":\n\nRating: ${btn.dataset.reviewRating} stars\nReview: "${btn.dataset.reviewText}"\n\nDraft a short, polite, professional response under 30 words. Thank positive reviewers or apologize to negative ones. Do not sign with a name.`;
                 const suggestedReply = await callGeminiAPI(prompt);
 
-                replyInput.value = suggestedReply.replace(/"/g, ''); // Remove quotes from Gemini response
+                replyInput.value = suggestedReply.replace(/"/g, '');
                 btn.disabled = false;
                 btn.innerHTML = originalButtonText;
             });
         });
-    }
 
-    if (summarizeBtn) {
-        summarizeBtn.addEventListener('click', async () => {
-            if (allReviews.length < 2) {
-                summaryContainer.innerHTML = '<p class="text-blue-600 font-semibold">Please add at least two reviews to create a summary.</p>';
-                return;
-            }
-            const originalButtonText = summarizeBtn.innerHTML;
-            summarizeBtn.disabled = true;
-            summarizeBtn.innerHTML = '✨ Generating...';
-            summaryContainer.innerHTML = '<p class="text-gray-600 animate-pulse">Analyzing feedback...</p>';
+        if (summarizeBtn) {
+            summarizeBtn.addEventListener('click', async () => {
+                if (allReviews.length < 2) {
+                    summaryContainer.innerHTML = '<p class="text-blue-600 font-semibold">Please add at least two reviews to create a summary.</p>';
+                    return;
+                }
+                const originalButtonText = summarizeBtn.innerHTML;
+                summarizeBtn.disabled = true;
+                summarizeBtn.innerHTML = '✨ Generating...';
+                summaryContainer.innerHTML = '<p class="text-gray-600 animate-pulse">Analyzing feedback...</p>';
 
-            const reviewsText = allReviews.map(r => `${r.name} (${r.rating}/5): "${r.text}"`).join('\n');
-            const prompt = `Summarize the following customer reviews for "The Bean" in a single, friendly paragraph (around 40-50 words). Highlight common themes for a potential customer, mentioning both positive and negative points if they exist. Do not use markdown.\n\nReviews:\n${reviewsText}`;
-            const summary = await callGeminiAPI(prompt);
+                const reviewsText = allReviews.map(r => `${r.name} (${r.rating}/5): "${r.text}"`).join('\n');
+                const prompt = `Summarize the following customer reviews for "The Bean" in a single, friendly paragraph (around 40-50 words). Highlight common themes for a potential customer, mentioning both positive and negative points if they exist. Do not use markdown.\n\nReviews:\n${reviewsText}`;
+                const summary = await callGeminiAPI(prompt);
 
-            summaryContainer.innerHTML = `<p class="text-gray-800 bg-green-100 p-4 rounded-lg border border-green-200">${summary.replace(/\n/g, '<br>')}</p>`;
-            summarizeBtn.disabled = false;
-            summarizeBtn.innerHTML = originalButtonText;
-        });
+                summaryContainer.innerHTML = `<p class="text-gray-800 bg-green-100 p-4 rounded-lg border border-green-200">${summary.replace(/\n/g, '<br>')}</p>`;
+                summarizeBtn.disabled = false;
+                summarizeBtn.innerHTML = originalButtonText;
+            });
+        }
     }
 
 
