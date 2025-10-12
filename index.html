@@ -8,6 +8,8 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <!-- Favicon - The icon in the browser tab -->
+  <link rel="icon" type="image/png" href="images/Logo.png">
 </head>
 
 <body class="bg-white text-gray-800">
@@ -22,15 +24,15 @@
       <div class="flex items-center">
         <nav class="hidden lg:flex space-x-6 items-center text-gray-700 font-medium">
           <a href="#breakfast" class="text-sm hover:text-green-600 transition duration-300">Breakfast</a>
+          <a href="#coffee" class="text-sm hover:text-green-600 transition duration-300">Coffee & Tea</a>
+          <a href="#boba" class="text-sm hover:text-green-600 transition duration-300">Boba</a>
           <a href="#specialties" class="text-sm hover:text-green-600 transition duration-300">Specialties</a>
-          <a href="#snacks-sides" class="text-sm hover:text-green-600 transition duration-300">Snacks & Sides</a>
           <a href="#plant-based" class="text-sm hover:text-green-600 transition duration-300">Plant Based</a>
           <a href="#quesadillas" class="text-sm hover:text-green-600 transition duration-300">Quesadillas</a>
           <a href="#salads" class="text-sm hover:text-green-600 transition duration-300">Salads</a>
-          <a href="#coffee" class="text-sm hover:text-green-600 transition duration-300">Coffee & Tea</a>
-          <a href="#boba" class="text-sm hover:text-green-600 transition duration-300">Boba</a>
           <a href="#smoothies" class="text-sm hover:text-green-600 transition duration-300">Smoothies</a>
           <a href="#cold-beverages" class="text-sm hover:text-green-600 transition duration-300">Cold Beverages</a>
+          <a href="#snacks" class="text-sm hover:text-green-600 transition duration-300">Snacks & Sides</a>
           <a href="#reviews" class="text-sm hover:text-green-600 transition duration-300">Reviews</a>
         </nav>
         <button id="menu-btn" class="lg:hidden ml-4">
@@ -44,15 +46,15 @@
     <!-- Mobile Menu -->
     <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-gray-200">
       <a href="#breakfast" class="block py-3 px-6 text-base text-gray-700 hover:bg-green-50">Breakfast</a>
+      <a href="#coffee" class="block py-3 px-6 text-base text-gray-700 hover:bg-green-50">Coffee & Tea</a>
+      <a href="#boba" class="block py-3 px-6 text-base text-gray-700 hover:bg-green-50">Boba</a>
       <a href="#specialties" class="block py-3 px-6 text-base text-gray-700 hover:bg-green-50">Specialties</a>
-      <a href="#snacks-sides" class="block py-3 px-6 text-base text-gray-700 hover:bg-green-50">Snacks & Sides</a>
       <a href="#plant-based" class="block py-3 px-6 text-base text-gray-700 hover:bg-green-50">Plant Based</a>
       <a href="#quesadillas" class="block py-3 px-6 text-base text-gray-700 hover:bg-green-50">Quesadillas</a>
       <a href="#salads" class="block py-3 px-6 text-base text-gray-700 hover:bg-green-50">Salads</a>
-      <a href="#coffee" class="block py-3 px-6 text-base text-gray-700 hover:bg-green-50">Coffee & Tea</a>
-      <a href="#boba" class="block py-3 px-6 text-base text-gray-700 hover:bg-green-50">Boba</a>
       <a href="#smoothies" class="block py-3 px-6 text-base text-gray-700 hover:bg-green-50">Smoothies</a>
       <a href="#cold-beverages" class="block py-3 px-6 text-base text-gray-700 hover:bg-green-50">Cold Beverages</a>
+      <a href="#snacks" class="block py-3 px-6 text-base text-gray-700 hover:bg-green-50">Snacks & Sides</a>
       <a href="#reviews" class="block py-3 px-6 text-base text-gray-700 hover:bg-green-50">Reviews</a>
     </div>
   </header>
@@ -141,6 +143,56 @@
       </div>
     </section>
 
+    <!-- Section: COFFEE + TEA -->
+    <section id="coffee" class="mb-16 scroll-mt-24">
+      <h2 class="text-4xl font-bold text-center mb-8 text-green-800">COFFEE + TEA</h2>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="bg-green-50 p-6 rounded-lg shadow-lg menu-card">
+          <h3 class="text-xl font-bold mb-2">Bean Blend</h3>
+          <p class="text-gray-600">12oz: $2.59 | 20oz: $3.39</p>
+        </div>
+        <div class="bg-green-50 p-6 rounded-lg shadow-lg menu-card">
+          <h3 class="text-xl font-bold mb-2">Cold Brew</h3>
+          <p class="text-gray-600">12oz: $3.19 | 20oz: $4.19</p>
+        </div>
+        <div class="bg-green-50 p-6 rounded-lg shadow-lg menu-card">
+          <h3 class="text-xl font-bold mb-2">Hot or Iced Tea</h3>
+          <p class="text-gray-600">Organic Green, Moroccan Mint, Black Forest & More. <br>12oz: $2.79 | 20oz: $3.59</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section: Boba Tea -->
+    <section id="boba" class="mb-16 scroll-mt-24">
+      <h2 class="text-4xl font-bold text-center mb-8 text-green-800">BOBA TEA</h2>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="bg-green-50 p-6 rounded-lg shadow-lg menu-card">
+          <h3 class="text-xl font-bold mb-2">BLOOD ORANGE PASSION BURST - $6.99</h3>
+          <p class="text-gray-600">Blood orange sparkling tea, pomegranate syrup, passion fruit boba.</p>
+        </div>
+        <div class="bg-green-50 p-6 rounded-lg shadow-lg menu-card">
+          <h3 class="text-xl font-bold mb-2">PANDAN COCO TWIST - $6.99</h3>
+          <p class="text-gray-600">Coconut water, pandan syrup, apple boba.</p>
+        </div>
+        <div class="bg-green-50 p-6 rounded-lg shadow-lg menu-card">
+          <h3 class="text-xl font-bold mb-2">STRAWBERRY MATCHA MAGIC - $6.99</h3>
+          <p class="text-gray-600">Matcha green tea, agave organic syrup, strawberry boba.</p>
+        </div>
+        <div class="bg-green-50 p-6 rounded-lg shadow-lg menu-card">
+          <h3 class="text-xl font-bold mb-2">BERRY HIBISCUS BOBA - $6.99</h3>
+          <p class="text-gray-600">Blueberry cinnamon sparkling tea, hibiscus syrup, lychee boba.</p>
+        </div>
+        <div class="bg-green-50 p-6 rounded-lg shadow-lg menu-card">
+          <h3 class="text-xl font-bold mb-2">STRAWBERRY LEMONADE BLISS - $6.99</h3>
+          <p class="text-gray-600">Green tea, lemonade, strawberry puree, sugar syrup, strawberry boba.</p>
+        </div>
+        <div class="bg-green-50 p-6 rounded-lg shadow-lg menu-card">
+          <h3 class="text-xl font-bold mb-2">TROPICAL BERRY BLISS - $6.99</h3>
+          <p class="text-gray-600">Green tea, mango juice, strawberry puree, agave syrup, strawberry boba.</p>
+        </div>
+      </div>
+    </section>
+
     <!-- Section: BEAN SPECIALTIES -->
     <section id="specialties" class="mb-16 scroll-mt-24">
       <h2 class="text-4xl font-bold text-center mb-8 text-green-800">BEAN SPECIALTIES</h2>
@@ -178,298 +230,6 @@
           <h3 class="text-xl font-bold mb-2">Gyros - $8.99 <span class="halal"></span></h3>
           <p class="text-gray-600">Romaine, tomatoes, onion and tzatziki sauce on panini bread.</p>
         </div>
-      </div>
-    </section>
-
-    <!-- Section: SNACKS AND SIDES -->
-    <section id="snacks-sides" class="mb-16 scroll-mt-24">
-      <h2 class="text-4xl font-bold text-center mb-8 text-green-800">SNACKS & SIDES</h2>
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-
-        <!-- All True Bars -->
-        <div class="bg-green-50 p-6 rounded-lg shadow-lg flex flex-col">
-          <div class="image-slider-wrapper">
-            <div class="image-slider">
-              <img src="images/True_Bars1.png" alt="All True Bars Image 1">
-              <img src="images/True_Bars2.png" alt="All True Bars Image 2">
-              <img src="images/True_Bars2.png" alt="All True Bars Image 3">
-            </div>
-            <div class="slider-dots"></div>
-          </div>
-          <div class="mt-4 flex-grow flex flex-col justify-between">
-            <div>
-              <h3 class="text-xl font-bold mb-2">All True Bars</h3>
-              <p class="text-gray-600 mb-2 text-sm">A plant-based protein bar made with simple ingredients. ≈190
-                Calories, ≈12g Plant Protein, ≈11g Fiber.</p>
-            </div>
-            <div>
-              <p class="font-semibold text-green-700 text-lg mt-2">$3.00</p>
-              <div class="mt-2 flex flex-wrap gap-2">
-                <span class="diet-tag tag-plant-based">Plant-Based</span>
-                <span class="diet-tag tag-high-protein">High Protein</span>
-                <span class="diet-tag tag-high-fiber">High Fiber</span>
-                <span class="diet-tag tag-gluten-free">Gluten-Free</span>
-                <span class="diet-tag tag-dairy-free">Dairy-Free</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- All Pure Protein Bars -->
-        <div class="bg-green-50 p-6 rounded-lg shadow-lg flex flex-col">
-          <div class="image-slider-wrapper">
-            <div class="image-slider">
-              <img src="images/Pure_Protein_Bar1.png" alt="All Pure Protein Bars Image 1">
-              <img src="images/Pure_Protein_Bar2.png" alt="All Pure Protein Bars Image 2">
-            </div>
-            <div class="slider-dots"></div>
-          </div>
-          <div class="mt-4 flex-grow flex flex-col justify-between">
-            <div>
-              <h3 class="text-xl font-bold mb-2">All Pure Protein Bars</h3>
-              <p class="text-gray-600 mb-2 text-sm">A high-protein, low-sugar bar. ≈200 Calories, ≈20g Protein, ≈2g
-                Sugar. Supports lean muscle and strength.</p>
-            </div>
-            <div>
-              <p class="font-semibold text-green-700 text-lg mt-2">$3.00</p>
-              <div class="mt-2 flex flex-wrap gap-2">
-                <span class="diet-tag tag-high-protein">High Protein</span>
-                <span class="diet-tag tag-low-sugar">Low Sugar</span>
-                <span class="diet-tag tag-gluten-free">Gluten-Free</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- All Gatorade Protein Bars -->
-        <div class="bg-green-50 p-6 rounded-lg shadow-lg flex flex-col">
-          <div class="image-slider-wrapper">
-            <div class="image-slider">
-              <img src="images/Gatorade_Protein_Bar1.png" alt="All Gatorade Protein Bars Image 1">
-              <img src="images/Gatorade_Protein_Bar2.png" alt="All Gatorade Protein Bars Image 2">
-              <img src="images/Gatorade_Protein_Bar3.png" alt="All Gatorade Protein Bars Image 3">
-            </div>
-            <div class="slider-dots"></div>
-          </div>
-          <div class="mt-4 flex-grow flex flex-col justify-between">
-            <div>
-              <h3 class="text-xl font-bold mb-2">All Gatorade Protein Bars</h3>
-              <p class="text-gray-600 mb-2 text-sm">Designed for muscle rebuilding post-workout. ≈350 Calories, ≈20g
-                Protein, ≈29g Total Sugars.</p>
-            </div>
-            <div>
-              <p class="font-semibold text-green-700 text-lg mt-2">$3.00</p>
-              <div class="mt-2 flex flex-wrap gap-2">
-                <span class="diet-tag tag-high-protein">High Protein</span>
-                <span class="diet-tag tag-post-workout">Post-Workout Fuel</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Kind Protein Bar -->
-        <div class="bg-green-50 p-6 rounded-lg shadow-lg flex flex-col">
-          <div class="image-slider-wrapper">
-            <div class="image-slider">
-              <img src="images/Kind_Protein_Bar.png" alt="Kind Protein from Meal Food Bar">
-            </div>
-            <div class="slider-dots"></div>
-          </div>
-          <div class="mt-4 flex-grow flex flex-col justify-between">
-            <div>
-              <h3 class="text-xl font-bold mb-2">Kind Protein Bar - Peanut Butter</h3>
-              <p class="text-gray-600 mb-2 text-sm">Made with whole nuts and a good source of protein. ≈250 Calories,
-                ≈12g Protein, ≈7g Total Sugar.</p>
-            </div>
-            <div>
-              <p class="font-semibold text-green-700 text-lg mt-2">$3.00</p>
-              <div class="mt-2 flex flex-wrap gap-2">
-                <span class="diet-tag tag-high-protein">High Protein</span>
-                <span class="diet-tag tag-good-source-fiber">Good Source of Fiber</span>
-                <span class="diet-tag tag-gluten-free">Gluten-Free</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Kind Fruit and Nut Bar -->
-        <div class="bg-green-50 p-6 rounded-lg shadow-lg flex flex-col">
-          <div class="image-slider-wrapper">
-            <div class="image-slider">
-              <img src="images/Kind_Fruit_Nut_Bar.png" alt="Kind Fruit and Nut Bar">
-            </div>
-            <div class="slider-dots"></div>
-          </div>
-          <div class="mt-4 flex-grow flex flex-col justify-between">
-            <div>
-              <h3 class="text-xl font-bold mb-2">Kind Fruit and Nut Bar</h3>
-              <p class="text-gray-600 mb-2 text-sm">Made with whole nuts and dried fruit. ≈190 Calories, ≈6g Protein,
-                ≈8g Total Sugar, ≈3g Fiber.</p>
-            </div>
-            <div>
-              <p class="font-semibold text-green-700 text-lg mt-2">$2.19</p>
-              <div class="mt-2 flex flex-wrap gap-2">
-                <span class="diet-tag tag-gluten-free">Gluten-Free</span>
-                <span class="diet-tag tag-good-source-fiber">Good Source of Fiber</span>
-                <span class="diet-tag tag-no-gmo">No GMOs</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Nutella & Go! -->
-        <div class="bg-green-50 p-6 rounded-lg shadow-lg flex flex-col">
-          <div class="image-slider-wrapper">
-            <div class="image-slider">
-              <img src="images/Nutella_Go.png" alt="Nutella & Go! Breadsticks">
-            </div>
-            <div class="slider-dots"></div>
-          </div>
-          <div class="mt-4 flex-grow flex flex-col justify-between">
-            <div>
-              <h3 class="text-xl font-bold mb-2">Nutella & Go! Breadsticks</h3>
-              <p class="text-gray-600 mb-2 text-sm">A snack pack of Nutella hazelnut spread with cocoa and breadsticks
-                for dipping. ≈260 Calories.</p>
-            </div>
-            <div>
-              <p class="font-semibold text-green-700 text-lg mt-2">$1.99</p>
-              <div class="mt-2 flex flex-wrap gap-2">
-                <span class="diet-tag tag-hazelnut">Hazelnut</span>
-                <span class="diet-tag tag-snack">Snack</span>
-                <span class="diet-tag tag-dip">Dip</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Snickers Bar -->
-        <div class="bg-green-50 p-6 rounded-lg shadow-lg flex flex-col">
-          <div class="image-slider-wrapper">
-            <div class="image-slider">
-              <img src="images/Snickers_Bar.png" alt="Snickers Bar">
-            </div>
-            <div class="slider-dots"></div>
-          </div>
-          <div class="mt-4 flex-grow flex flex-col justify-between">
-            <div>
-              <h3 class="text-xl font-bold mb-2">Snickers Bar</h3>
-              <p class="text-gray-600 mb-2 text-sm">Milk chocolate, nougat, caramel, and peanuts. ≈250-280 Calories.
-                Contains Peanuts, Milk, Egg, and Soy.</p>
-            </div>
-            <div>
-              <p class="font-semibold text-green-700 text-lg mt-2">$2.19</p>
-              <div class="mt-2 flex flex-wrap gap-2">
-                <span class="diet-tag tag-chocolate">Chocolate</span>
-                <span class="diet-tag tag-peanuts">Peanuts</span>
-                <span class="diet-tag tag-candy">Candy</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- KitKat -->
-        <div class="bg-green-50 p-6 rounded-lg shadow-lg flex flex-col">
-          <div class="image-slider-wrapper">
-            <div class="image-slider">
-              <img src="images/KitKat.png" alt="KitKat">
-            </div>
-            <div class="slider-dots"></div>
-          </div>
-          <div class="mt-4 flex-grow flex flex-col justify-between">
-            <div>
-              <h3 class="text-xl font-bold mb-2">KitKat</h3>
-              <p class="text-gray-600 mb-2 text-sm">Crisp wafer in milk chocolate. ≈210 Calories, ≈23g Total Sugar, ≈2g
-                Protein.</p>
-            </div>
-            <div>
-              <p class="font-semibold text-green-700 text-lg mt-2">$2.19</p>
-              <div class="mt-2 flex flex-wrap gap-2">
-                <span class="diet-tag tag-chocolate">Chocolate</span>
-                <span class="diet-tag tag-wafer">Wafer</span>
-                <span class="diet-tag tag-candy">Candy</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Clif Bars -->
-        <div class="bg-green-50 p-6 rounded-lg shadow-lg flex flex-col">
-          <div class="image-slider-wrapper">
-            <div class="image-slider">
-              <img src="images/Cliff_Bar1.png" alt="Clif Bars Image 1">
-              <img src="images/Cliff_Bar2.png" alt="Clif Bars Image 2">
-            </div>
-            <div class="slider-dots"></div>
-          </div>
-          <div class="mt-4 flex-grow flex flex-col justify-between">
-            <div>
-              <h3 class="text-xl font-bold mb-2">Clif Bars</h3>
-              <p class="text-gray-600 mb-2 text-sm">An energy bar made with wholesome, organic ingredients like rolled
-                oats. ≈250-300 Calories.</p>
-            </div>
-            <div>
-              <p class="font-semibold text-green-700 text-lg mt-2">$3.00</p>
-              <div class="mt-2 flex flex-wrap gap-2">
-                <span class="diet-tag tag-energy-bar">Energy Bar</span>
-                <span class="diet-tag tag-good-source-fiber">Good Source of Fiber</span>
-                <span class="diet-tag tag-organic">Organic Rolled Oats</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- All Chips -->
-        <div class="bg-green-50 p-6 rounded-lg shadow-lg flex flex-col">
-          <div class="image-slider-wrapper">
-            <div class="image-slider">
-              <img src="images/Chips_Bag.png" alt="All Chips">
-            </div>
-            <div class="slider-dots"></div>
-          </div>
-          <div class="mt-4 flex-grow flex flex-col justify-between">
-            <div>
-              <h3 class="text-xl font-bold mb-2">All Chips</h3>
-              <p class="text-gray-600 mb-2 text-sm">1 oz Snack Bag. Sliced, fried potatoes, often seasoned with salt.
-                ≈160 Calories.</p>
-            </div>
-            <div>
-              <p class="font-semibold text-green-700 text-lg mt-2">$1.49</p>
-              <div class="mt-2 flex flex-wrap gap-2">
-                <span class="diet-tag tag-salty-snack">Salty Snack</span>
-                <span class="diet-tag tag-gluten-free">Gluten-Free</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Chobani Yogurt -->
-        <div class="bg-green-50 p-6 rounded-lg shadow-lg flex flex-col">
-          <div class="image-slider-wrapper">
-            <div class="image-slider">
-              <img src="images/Chobani_Yogurt1.png" alt="Chobani Yogurt Image 1">
-              <img src="images/Chobani_Yogurt2.png" alt="Chobani Yogurt Image 2">
-              <img src="images/Chobani_Yogurt3.png" alt="Chobani Yogurt Image 3">
-            </div>
-            <div class="slider-dots"></div>
-          </div>
-          <div class="mt-4 flex-grow flex flex-col justify-between">
-            <div>
-              <h3 class="text-xl font-bold mb-2">Chobani Nonfat Greek Yogurt</h3>
-              <p class="text-gray-600 mb-2 text-sm">Triple-strained Greek yogurt, thick and creamy. ≈80 Calories, ≈14g
-                Protein, 0g Added Sugar (Nonfat Plain).</p>
-            </div>
-            <div>
-              <p class="font-semibold text-green-700 text-lg mt-2">$3.29</p>
-              <div class="mt-2 flex flex-wrap gap-2">
-                <span class="diet-tag tag-high-protein">High Protein</span>
-                <span class="diet-tag tag-greek-yogurt">Greek Yogurt</span>
-                <span class="diet-tag tag-nonfat">Nonfat</span>
-                <span class="diet-tag tag-calcium">Good Source of Calcium</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
       </div>
     </section>
 
@@ -542,56 +302,6 @@
           <h3 class="text-xl font-bold mb-2">Urban Chopped - $8.49</h3>
           <p class="text-gray-600">Chopped chicken breast, egg whites, bacon, Mozzarella, banana peppers and tomato over
             romaine lettuce with honey mustard pesto dressing on side.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Section: COFFEE + TEA -->
-    <section id="coffee" class="mb-16 scroll-mt-24">
-      <h2 class="text-4xl font-bold text-center mb-8 text-green-800">COFFEE + TEA</h2>
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div class="bg-green-50 p-6 rounded-lg shadow-lg menu-card">
-          <h3 class="text-xl font-bold mb-2">Bean Blend</h3>
-          <p class="text-gray-600">12oz: $2.59 | 20oz: $3.39</p>
-        </div>
-        <div class="bg-green-50 p-6 rounded-lg shadow-lg menu-card">
-          <h3 class="text-xl font-bold mb-2">Cold Brew</h3>
-          <p class="text-gray-600">12oz: $3.19 | 20oz: $4.19</p>
-        </div>
-        <div class="bg-green-50 p-6 rounded-lg shadow-lg menu-card">
-          <h3 class="text-xl font-bold mb-2">Hot or Iced Tea</h3>
-          <p class="text-gray-600">Organic Green, Moroccan Mint, Black Forest & More. <br>12oz: $2.79 | 20oz: $3.59</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Section: Boba Tea -->
-    <section id="boba" class="mb-16 scroll-mt-24">
-      <h2 class="text-4xl font-bold text-center mb-8 text-green-800">BOBA TEA</h2>
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div class="bg-green-50 p-6 rounded-lg shadow-lg menu-card">
-          <h3 class="text-xl font-bold mb-2">BLOOD ORANGE PASSION BURST - $6.99</h3>
-          <p class="text-gray-600">Blood orange sparkling tea, pomegranate syrup, passion fruit boba.</p>
-        </div>
-        <div class="bg-green-50 p-6 rounded-lg shadow-lg menu-card">
-          <h3 class="text-xl font-bold mb-2">PANDAN COCO TWIST - $6.99</h3>
-          <p class="text-gray-600">Coconut water, pandan syrup, apple boba.</p>
-        </div>
-        <div class="bg-green-50 p-6 rounded-lg shadow-lg menu-card">
-          <h3 class="text-xl font-bold mb-2">STRAWBERRY MATCHA MAGIC - $6.99</h3>
-          <p class="text-gray-600">Matcha green tea, agave organic syrup, strawberry boba.</p>
-        </div>
-        <div class="bg-green-50 p-6 rounded-lg shadow-lg menu-card">
-          <h3 class="text-xl font-bold mb-2">BERRY HIBISCUS BOBA - $6.99</h3>
-          <p class="text-gray-600">Blueberry cinnamon sparkling tea, hibiscus syrup, lychee boba.</p>
-        </div>
-        <div class="bg-green-50 p-6 rounded-lg shadow-lg menu-card">
-          <h3 class="text-xl font-bold mb-2">STRAWBERRY LEMONADE BLISS - $6.99</h3>
-          <p class="text-gray-600">Green tea, lemonade, strawberry puree, sugar syrup, strawberry boba.</p>
-        </div>
-        <div class="bg-green-50 p-6 rounded-lg shadow-lg menu-card">
-          <h3 class="text-xl font-bold mb-2">TROPICAL BERRY BLISS - $6.99</h3>
-          <p class="text-gray-600">Green tea, mango juice, strawberry puree, agave syrup, strawberry boba.</p>
         </div>
       </div>
     </section>
@@ -735,162 +445,142 @@
 
     <!-- Section: COLD BEVERAGES -->
     <section id="cold-beverages" class="mb-16 scroll-mt-24">
-      <h2 class="text-4xl font-bold text-center mb-12 text-green-800">COLD BEVERAGES</h2>
-
+      <h2 class="text-4xl font-bold text-center mb-8 text-green-800">COLD BEVERAGES</h2>
       <!-- Subsection: Celsius -->
       <div class="subsection mb-12">
         <h3 class="text-3xl font-semibold text-center mb-8 text-gray-700 border-b-2 border-green-200 pb-2">Celsius</h3>
         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <!-- Celsius 1 -->
           <div class="bg-gray-50 p-4 rounded-lg shadow-lg text-center menu-card flex flex-col">
             <img src="images/Celsius1.png" alt="Celsius Live Fit Sparkling Arctic Vibe"
               class="w-full h-56 object-contain mb-4 mx-auto">
             <div class="flex-grow flex flex-col justify-between">
               <div>
-                <h4 class="text-lg font-bold mb-2">Celsius Live Fit Sparkling Arctic Vibe</h4>
+                <h4 class="text-lg font-bold mb-2">Celsius Sparkling Arctic Vibe</h4>
                 <p class="text-gray-600 text-sm mb-2">A "frozen berry" flavor with an icy, refreshing taste.</p>
               </div>
-              <p class="font-semibold text-green-700 mb-3">12FL Oz: $3.49</p>
+              <p class="font-semibold text-green-700">$3.49</p>
             </div>
           </div>
-          <!-- Celsius 2 -->
           <div class="bg-gray-50 p-4 rounded-lg shadow-lg text-center menu-card flex flex-col">
             <img src="images/Celsius2.png" alt="Celsius Live Fit Sparkling Mango Passionfruit"
               class="w-full h-56 object-contain mb-4 mx-auto">
             <div class="flex-grow flex flex-col justify-between">
               <div>
-                <h4 class="text-lg font-bold mb-2">Celsius Live Fit Sparkling Mango Passionfruit</h4>
-                <p class="text-gray-600 text-sm mb-2">A vibrant and exotic combination of sweet, juicy mango and
-                  luscious, tart passionfruit.</p>
+                <h4 class="text-lg font-bold mb-2">Celsius Sparkling Mango Passionfruit</h4>
+                <p class="text-gray-600 text-sm mb-2">Exotic combo of sweet mango and tart passionfruit.</p>
               </div>
-              <p class="font-semibold text-green-700 mb-3">12FL Oz: $3.49</p>
+              <p class="font-semibold text-green-700">$3.49</p>
             </div>
           </div>
-          <!-- Celsius 3 -->
           <div class="bg-gray-50 p-4 rounded-lg shadow-lg text-center menu-card flex flex-col">
             <img src="images/Celsius3.png" alt="Celsius Live Fit Sparkling Orange"
               class="w-full h-56 object-contain mb-4 mx-auto">
             <div class="flex-grow flex flex-col justify-between">
               <div>
-                <h4 class="text-lg font-bold mb-2">Celsius Live Fit Sparkling Orange</h4>
+                <h4 class="text-lg font-bold mb-2">Celsius Sparkling Orange</h4>
                 <p class="text-gray-600 text-sm mb-2">A classic, citrusy orange flavor.</p>
               </div>
-              <p class="font-semibold text-green-700 mb-3">12FL Oz: $3.49</p>
+              <p class="font-semibold text-green-700">$3.49</p>
             </div>
           </div>
-          <!-- Celsius 4 -->
           <div class="bg-gray-50 p-4 rounded-lg shadow-lg text-center menu-card flex flex-col">
             <img src="images/Celsius4.png" alt="Celsius Live Fit Sparkling Kiwi Guava"
               class="w-full h-56 object-contain mb-4 mx-auto">
             <div class="flex-grow flex flex-col justify-between">
               <div>
-                <h4 class="text-lg font-bold mb-2">Celsius Live Fit Sparkling Kiwi Guava</h4>
+                <h4 class="text-lg font-bold mb-2">Celsius Sparkling Kiwi Guava</h4>
                 <p class="text-gray-600 text-sm mb-2">A tropical blend of ripe kiwi and unique guava.</p>
               </div>
-              <p class="font-semibold text-green-700 mb-3">12FL Oz: $3.49</p>
+              <p class="font-semibold text-green-700">$3.49</p>
             </div>
           </div>
-          <!-- Celsius 5 -->
           <div class="bg-gray-50 p-4 rounded-lg shadow-lg text-center menu-card flex flex-col">
             <img src="images/Celsius5.png" alt="Celsius Live Fit Non-Carbonated Peach Mango Green Tea"
               class="w-full h-56 object-contain mb-4 mx-auto">
             <div class="flex-grow flex flex-col justify-between">
               <div>
-                <h4 class="text-lg font-bold mb-2">Celsius Live Fit Non-Carbonated Peach Mango Green Tea</h4>
-                <p class="text-gray-600 text-sm mb-2">A blend of peach, mango, and green tea.</p>
+                <h4 class="text-lg font-bold mb-2">Celsius Peach Mango Green Tea</h4>
+                <p class="text-gray-600 text-sm mb-2">A non-carbonated blend of peach, mango, and green tea.</p>
               </div>
-              <p class="font-semibold text-green-700 mb-3">12FL Oz: $3.49</p>
+              <p class="font-semibold text-green-700">$3.49</p>
             </div>
           </div>
-          <!-- Celsius 6 -->
           <div class="bg-gray-50 p-4 rounded-lg shadow-lg text-center menu-card flex flex-col">
             <img src="images/Celsius6.png" alt="Celsius Live Fit Sparkling Mango Lemonade"
               class="w-full h-56 object-contain mb-4 mx-auto">
             <div class="flex-grow flex flex-col justify-between">
               <div>
-                <h4 class="text-lg font-bold mb-2">Celsius Live Fit Sparkling Mango Lemonade</h4>
+                <h4 class="text-lg font-bold mb-2">Celsius Sparkling Mango Lemonade</h4>
                 <p class="text-gray-600 text-sm mb-2">A blend of juicy mango and zesty lemonade.</p>
               </div>
-              <p class="font-semibold text-green-700 mb-3">12FL Oz: $3.49</p>
+              <p class="font-semibold text-green-700">$3.49</p>
             </div>
           </div>
-          <!-- Celsius 7 -->
           <div class="bg-gray-50 p-4 rounded-lg shadow-lg text-center menu-card flex flex-col">
             <img src="images/Celsius7.png" alt="Celsius Live Fit Non-Carbonated Fizz-Free Blue Razz Lemonade"
               class="w-full h-56 object-contain mb-4 mx-auto">
             <div class="flex-grow flex flex-col justify-between">
               <div>
-                <h4 class="text-lg font-bold mb-2">Celsius Live Fit Non-Carbonated Fizz-Free Blue Razz Lemonade</h4>
-                <p class="text-gray-600 text-sm mb-2">A uniquely refreshing combination of delicately sweet blue
-                  raspberry notes with a crisp, zesty clean citrus (lemonade) finish.</p>
+                <h4 class="text-lg font-bold mb-2">Celsius Blue Razz Lemonade</h4>
+                <p class="text-gray-600 text-sm mb-2">A non-carbonated blend of blue raspberry and lemonade.</p>
               </div>
-              <p class="font-semibold text-green-700 mb-3">12FL Oz: $3.49</p>
+              <p class="font-semibold text-green-700">$3.49</p>
             </div>
           </div>
         </div>
       </div>
-
-      <!-- Subsection: Gatorade Sport Drinks -->
+      <!-- Subsection: Gatorade -->
       <div class="subsection mb-12">
         <h3 class="text-3xl font-semibold text-center mb-8 text-gray-700 border-b-2 border-green-200 pb-2">Gatorade
-          Sport Drinks</h3>
+        </h3>
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <!-- Gatorade 1 -->
           <div class="bg-gray-50 p-4 rounded-lg shadow-lg text-center menu-card flex flex-col">
             <img src="images/Gatorade-Cool_Blue.png" alt="Gatorade Cool Blue Sports Drink"
               class="w-full h-56 object-contain mb-4 mx-auto">
             <div class="flex-grow flex flex-col justify-between">
               <div>
-                <h4 class="text-lg font-bold mb-2">Gatorade Cool Blue Sports Drink</h4>
-                <p class="text-gray-600 text-sm mb-2">Original Thirst Quencher formula for rehydration and muscle
-                  refueling.</p>
+                <h4 class="text-lg font-bold mb-2">Gatorade Cool Blue</h4>
+                <p class="text-gray-600 text-sm mb-2">Original Thirst Quencher for rehydration and muscle refueling.</p>
               </div>
-              <p class="font-semibold text-green-700 mb-3">$2.79</p>
+              <p class="font-semibold text-green-700">$2.79</p>
             </div>
           </div>
-          <!-- Gatorade 2 -->
           <div class="bg-gray-50 p-4 rounded-lg shadow-lg text-center menu-card flex flex-col">
             <img src="images/Gatorade-Fruit_Punch.png" alt="Gatorade Fruit Punch Sports Drink"
               class="w-full h-56 object-contain mb-4 mx-auto">
             <div class="flex-grow flex flex-col justify-between">
               <div>
-                <h4 class="text-lg font-bold mb-2">Gatorade Fruit Punch Sports Drink</h4>
-                <p class="text-gray-600 text-sm mb-2">Original Thirst Quencher formula with a classic, bold fruit punch
-                  flavor.</p>
+                <h4 class="text-lg font-bold mb-2">Gatorade Fruit Punch</h4>
+                <p class="text-gray-600 text-sm mb-2">Classic, bold fruit punch flavor.</p>
               </div>
-              <p class="font-semibold text-green-700 mb-3">$2.79</p>
+              <p class="font-semibold text-green-700">$2.79</p>
             </div>
           </div>
-          <!-- Gatorade 3 -->
           <div class="bg-gray-50 p-4 rounded-lg shadow-lg text-center menu-card flex flex-col">
             <img src="images/Gatorade-Lemon_Lime.png" alt="Gatorade Lemon-Lime Sports Drink"
               class="w-full h-56 object-contain mb-4 mx-auto">
             <div class="flex-grow flex flex-col justify-between">
               <div>
-                <h4 class="text-lg font-bold mb-2">Gatorade Lemon-Lime Sports Drink</h4>
-                <p class="text-gray-600 text-sm mb-2">The original Gatorade flavor, formulated to hydrate and refuel.
-                </p>
+                <h4 class="text-lg font-bold mb-2">Gatorade Lemon-Lime</h4>
+                <p class="text-gray-600 text-sm mb-2">The original Gatorade flavor to hydrate and refuel.</p>
               </div>
-              <p class="font-semibold text-green-700 mb-3">$2.79</p>
+              <p class="font-semibold text-green-700">$2.79</p>
             </div>
           </div>
         </div>
       </div>
-
       <!-- Subsection: Gatorade Zero -->
       <div class="subsection mb-12">
         <h3 class="text-3xl font-semibold text-center mb-8 text-gray-700 border-b-2 border-green-200 pb-2">Gatorade
-          Zero Sugar</h3>
+          Zero</h3>
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <!-- Gatorade Zero 1 -->
           <div class="bg-gray-50 p-4 rounded-lg shadow-lg text-center menu-card flex flex-col">
             <img src="images/Gatorade-Glacier_Freeze.png" alt="Gatorade Zero Glacier Freeze"
               class="w-full h-56 object-contain mb-4 mx-auto">
             <div class="flex-grow flex flex-col justify-between">
               <div>
                 <h4 class="text-lg font-bold mb-2">Gatorade Zero Glacier Freeze</h4>
-                <p class="text-gray-600 text-sm mb-2">Hydration with the same electrolytes as Thirst Quencher, but zero
-                  sugar.</p>
+                <p class="text-gray-600 text-sm mb-2">Same electrolytes, zero sugar.</p>
               </div>
               <div>
                 <p class="font-semibold text-green-700 mb-3">$3.99</p>
@@ -898,15 +588,13 @@
               </div>
             </div>
           </div>
-          <!-- Gatorade Zero 2 -->
           <div class="bg-gray-50 p-4 rounded-lg shadow-lg text-center menu-card flex flex-col">
             <img src="images/Gatorade-Glacier_Cherry.png" alt="Gatorade Zero Sugar-Free Glacier Cherry"
               class="w-full h-56 object-contain mb-4 mx-auto">
             <div class="flex-grow flex flex-col justify-between">
               <div>
-                <h4 class="text-lg font-bold mb-2">Gatorade Zero Sugar-Free Glacier Cherry</h4>
-                <p class="text-gray-600 text-sm mb-2">Light-tasting, white-colored beverage with a subtle cherry flavor.
-                </p>
+                <h4 class="text-lg font-bold mb-2">Gatorade Zero Glacier Cherry</h4>
+                <p class="text-gray-600 text-sm mb-2">Light-tasting, subtle cherry flavor.</p>
               </div>
               <div>
                 <p class="font-semibold text-green-700 mb-3">$3.99</p>
@@ -914,14 +602,13 @@
               </div>
             </div>
           </div>
-          <!-- Gatorade Zero 3 -->
           <div class="bg-gray-50 p-4 rounded-lg shadow-lg text-center menu-card flex flex-col">
             <img src="images/Gatorade-Zero_Lemon_Lime.png" alt="Gatorade Zero Sugar Lemon Lime Thirst Quencher"
               class="w-full h-56 object-contain mb-4 mx-auto">
             <div class="flex-grow flex flex-col justify-between">
               <div>
-                <h4 class="text-lg font-bold mb-2">Gatorade Zero Sugar Lemon Lime</h4>
-                <p class="text-gray-600 text-sm mb-2">Zero sugar version of the classic Lemon-Lime flavor.</p>
+                <h4 class="text-lg font-bold mb-2">Gatorade Zero Lemon Lime</h4>
+                <p class="text-gray-600 text-sm mb-2">Zero sugar version of the classic Lemon-Lime.</p>
               </div>
               <div>
                 <p class="font-semibold text-green-700 mb-3">$3.99</p>
@@ -931,21 +618,19 @@
           </div>
         </div>
       </div>
-
       <!-- Subsection: Muscle Milk -->
       <div class="subsection mb-12">
         <h3 class="text-3xl font-semibold text-center mb-8 text-gray-700 border-b-2 border-green-200 pb-2">Muscle Milk
         </h3>
         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <!-- Muscle Milk 1 -->
           <div class="bg-gray-50 p-4 rounded-lg shadow-lg text-center menu-card flex flex-col">
             <img src="images/Muscle_Milk-Pro_Knockout_Chocolate.png"
               alt="MUSCLE MILK Pro Series Protein Shake Knockout Chocolate"
               class="w-full h-56 object-contain mb-4 mx-auto">
             <div class="flex-grow flex flex-col justify-between">
               <div>
-                <h4 class="text-lg font-bold mb-2">MUSCLE MILK Pro Series Knockout Chocolate</h4>
-                <p class="text-gray-600 text-sm mb-2">High Protein shake. Protein: 40g. Calories: ≈220.</p>
+                <h4 class="text-lg font-bold mb-2">Muscle Milk Pro Knockout Chocolate</h4>
+                <p class="text-gray-600 text-sm mb-2">40g protein shake.</p>
               </div>
               <div>
                 <p class="font-semibold text-green-700 mb-3">$6.89</p>
@@ -954,15 +639,14 @@
               </div>
             </div>
           </div>
-          <!-- Muscle Milk 2 -->
           <div class="bg-gray-50 p-4 rounded-lg shadow-lg text-center menu-card flex flex-col">
             <img src="images/Muscle_Milk-Pro_Intense_Vanilla.png"
               alt="MUSCLE MILK Pro Advanced Nutrition Protein Shake, Intense Vanilla"
               class="w-full h-56 object-contain mb-4 mx-auto">
             <div class="flex-grow flex flex-col justify-between">
               <div>
-                <h4 class="text-lg font-bold mb-2">MUSCLE MILK Pro Advanced Intense Vanilla</h4>
-                <p class="text-gray-600 text-sm mb-2">High Protein shake. Protein: 40g. Calories: ≈210.</p>
+                <h4 class="text-lg font-bold mb-2">Muscle Milk Pro Intense Vanilla</h4>
+                <p class="text-gray-600 text-sm mb-2">40g protein shake.</p>
               </div>
               <div>
                 <p class="font-semibold text-green-700 mb-3">$6.89</p>
@@ -971,14 +655,13 @@
               </div>
             </div>
           </div>
-          <!-- Muscle Milk 3 -->
           <div class="bg-gray-50 p-4 rounded-lg shadow-lg text-center menu-card flex flex-col">
             <img src="images/Muscle_Milk-Genuine_Vanilla_Creme.png"
               alt="Muscle Milk Genuine Protein Shake, Vanilla Creme" class="w-full h-56 object-contain mb-4 mx-auto">
             <div class="flex-grow flex flex-col justify-between">
               <div>
                 <h4 class="text-lg font-bold mb-2">Muscle Milk Genuine Vanilla Creme</h4>
-                <p class="text-gray-600 text-sm mb-2">Protein: 25g. Calories: ≈160. Contains 6g of fiber.</p>
+                <p class="text-gray-600 text-sm mb-2">25g protein shake with 0g sugar.</p>
               </div>
               <div>
                 <p class="font-semibold text-green-700 mb-3">$5.79</p>
@@ -988,14 +671,13 @@
               </div>
             </div>
           </div>
-          <!-- Muscle Milk 4 -->
           <div class="bg-gray-50 p-4 rounded-lg shadow-lg text-center menu-card flex flex-col">
             <img src="images/Muscle_Milk-Genuine_Chocolate.png" alt="MUSCLE MILK Protein Shake Chocolate"
               class="w-full h-56 object-contain mb-4 mx-auto">
             <div class="flex-grow flex flex-col justify-between">
               <div>
-                <h4 class="text-lg font-bold mb-2">MUSCLE MILK Genuine Chocolate</h4>
-                <p class="text-gray-600 text-sm mb-2">Protein: 25g. Calories: ≈170. Contains 6g of fiber.</p>
+                <h4 class="text-lg font-bold mb-2">Muscle Milk Genuine Chocolate</h4>
+                <p class="text-gray-600 text-sm mb-2">25g protein shake with 0g sugar.</p>
               </div>
               <div>
                 <p class="font-semibold text-green-700 mb-3">$5.79</p>
@@ -1007,7 +689,6 @@
           </div>
         </div>
       </div>
-
       <!-- Subsection: Starbucks -->
       <div class="subsection mb-12">
         <h3 class="text-3xl font-semibold text-center mb-8 text-gray-700 border-b-2 border-green-200 pb-2">Starbucks
@@ -1084,7 +765,6 @@
           </div>
         </div>
       </div>
-
       <!-- Subsection: More Cold Drinks -->
       <div class="subsection mb-12">
         <h3 class="text-3xl font-semibold text-center mb-8 text-gray-700 border-b-2 border-green-200 pb-2">More Cold
@@ -1136,6 +816,289 @@
             </div>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- Section: SNACKS & SIDES -->
+    <section id="snacks" class="mb-16 scroll-mt-24">
+      <h2 class="text-4xl font-bold text-center mb-8 text-green-800">SNACKS & SIDES</h2>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+        <!-- Item 1: All True Bars -->
+        <div class="bg-white p-6 rounded-lg shadow-lg menu-card flex flex-col">
+          <div class="image-slider-wrapper">
+            <div class="image-slider">
+              <img src="images/True_Bars1.png" alt="All True Bars Image 1">
+              <img src="images/True_Bars2.png" alt="All True Bars Image 2">
+            </div>
+            <div class="slider-dots"></div>
+          </div>
+          <div class="flex-grow flex flex-col justify-between pt-4">
+            <div>
+              <h4 class="text-xl font-bold mb-2">All True Bars</h4>
+              <p class="text-gray-600 text-sm mb-3">Plant-based protein bar with almonds and pea protein. High in fiber.
+              </p>
+            </div>
+            <div>
+              <p class="font-bold text-green-700 text-lg mb-3">$3.00</p>
+              <div class="mt-2 flex flex-wrap gap-2 justify-center">
+                <span class="diet-tag tag-plant-based">Plant-Based</span>
+                <span class="diet-tag tag-high-protein">High Protein</span>
+                <span class="diet-tag tag-high-fiber">High Fiber</span>
+                <span class="diet-tag tag-gluten-free">Gluten-Free</span>
+                <span class="diet-tag tag-dairy-free">Dairy-Free</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 2: All Pure Protein Bars -->
+        <div class="bg-white p-6 rounded-lg shadow-lg menu-card flex flex-col">
+          <div class="image-slider-wrapper">
+            <div class="image-slider">
+              <img src="images/Pure_Protein_Bar1.png" alt="All Pure Protein Bars Image 1">
+              <img src="images/Pure_Protein_Bar2.png" alt="All Pure Protein Bars Image 2">
+            </div>
+            <div class="slider-dots"></div>
+          </div>
+          <div class="flex-grow flex flex-col justify-between pt-4">
+            <div>
+              <h4 class="text-xl font-bold mb-2">All Pure Protein Bars</h4>
+              <p class="text-gray-600 text-sm mb-3">High-protein, low-sugar bar with whey protein. Supports lean muscle.
+              </p>
+            </div>
+            <div>
+              <p class="font-bold text-green-700 text-lg mb-3">$3.00</p>
+              <div class="mt-2 flex flex-wrap gap-2 justify-center">
+                <span class="diet-tag tag-high-protein">High Protein</span>
+                <span class="diet-tag tag-low-sugar">Low Sugar</span>
+                <span class="diet-tag tag-gluten-free">Gluten-Free</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 3: All Gatorade Protein Bars -->
+        <div class="bg-white p-6 rounded-lg shadow-lg menu-card flex flex-col">
+          <div class="image-slider-wrapper">
+            <div class="image-slider">
+              <img src="images/Gatorade_Protein_Bar1.png" alt="All Gatorade Protein Bars Image 1">
+              <img src="images/Gatorade_Protein_Bar2.png" alt="All Gatorade Protein Bars Image 2">
+              <img src="images/Gatorade_Protein_Bar3.png" alt="All Gatorade Protein Bars Image 3">
+            </div>
+            <div class="slider-dots"></div>
+          </div>
+          <div class="flex-grow flex flex-col justify-between pt-4">
+            <div>
+              <h4 class="text-xl font-bold mb-2">All Gatorade Protein Bars</h4>
+              <p class="text-gray-600 text-sm mb-3">Designed for muscle rebuilding post-workout with 20g of protein.</p>
+            </div>
+            <div>
+              <p class="font-bold text-green-700 text-lg mb-3">$3.00</p>
+              <div class="mt-2 flex flex-wrap gap-2 justify-center">
+                <span class="diet-tag tag-high-protein">High Protein</span>
+                <span class="diet-tag tag-post-workout">Post-Workout Fuel</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 4: Kind Protein Bar -->
+        <div class="bg-white p-6 rounded-lg shadow-lg menu-card flex flex-col">
+          <div class="image-slider-wrapper">
+            <div class="image-slider">
+              <img src="images/Kind_Protein_Bar.png" alt="Kind Protein Bar Image 1">
+            </div>
+            <div class="slider-dots"></div>
+          </div>
+          <div class="flex-grow flex flex-col justify-between pt-4">
+            <div>
+              <h4 class="text-xl font-bold mb-2">Kind Protein Bar - Crunchy Peanut Butter</h4>
+              <p class="text-gray-600 text-sm mb-3">Made with whole nuts and 12g of protein.</p>
+            </div>
+            <div>
+              <p class="font-bold text-green-700 text-lg mb-3">$3.00</p>
+              <div class="mt-2 flex flex-wrap gap-2 justify-center">
+                <span class="diet-tag tag-high-protein">High Protein</span>
+                <span class="diet-tag tag-good-source-fiber">Good Source of Fiber</span>
+                <span class="diet-tag tag-gluten-free">Gluten-Free</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 5: Kind Fruit and Nut Bar -->
+        <div class="bg-white p-6 rounded-lg shadow-lg menu-card flex flex-col">
+          <div class="image-slider-wrapper">
+            <div class="image-slider">
+              <img src="images/Kind_Fruit_Nut_Bar.png" alt="Kind Fruit and Nut Bar Image 1">
+            </div>
+            <div class="slider-dots"></div>
+          </div>
+          <div class="flex-grow flex flex-col justify-between pt-4">
+            <div>
+              <h4 class="text-xl font-bold mb-2">Kind Fruit & Nut Bar</h4>
+              <p class="text-gray-600 text-sm mb-3">Made with whole nuts, dried fruit, and simple ingredients.</p>
+            </div>
+            <div>
+              <p class="font-bold text-green-700 text-lg mb-3">$2.19</p>
+              <div class="mt-2 flex flex-wrap gap-2 justify-center">
+                <span class="diet-tag tag-gluten-free">Gluten-Free</span>
+                <span class="diet-tag tag-good-source-fiber">Good Source of Fiber</span>
+                <span class="diet-tag tag-no-gmo">No GMOs</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 6: Nutella & Go! -->
+        <div class="bg-white p-6 rounded-lg shadow-lg menu-card flex flex-col">
+          <div class="image-slider-wrapper">
+            <div class="image-slider">
+              <img src="images/Nutella_Go.png" alt="Nutella & Go! Image 1">
+            </div>
+            <div class="slider-dots"></div>
+          </div>
+          <div class="flex-grow flex flex-col justify-between pt-4">
+            <div>
+              <h4 class="text-xl font-bold mb-2">Nutella & Go! Breadsticks</h4>
+              <p class="text-gray-600 text-sm mb-3">A snack pack with Nutella hazelnut spread and breadsticks.</p>
+            </div>
+            <div>
+              <p class="font-bold text-green-700 text-lg mb-3">$1.99</p>
+              <div class="mt-2 flex flex-wrap gap-2 justify-center">
+                <span class="diet-tag tag-hazelnut">Hazelnut</span>
+                <span class="diet-tag tag-snack">Snack</span>
+                <span class="diet-tag tag-dip">Dip</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 7: Snickers Bar -->
+        <div class="bg-white p-6 rounded-lg shadow-lg menu-card flex flex-col">
+          <div class="image-slider-wrapper">
+            <div class="image-slider">
+              <img src="images/Snickers_Bar.png" alt="Snickers Bar Image 1">
+            </div>
+            <div class="slider-dots"></div>
+          </div>
+          <div class="flex-grow flex flex-col justify-between pt-4">
+            <div>
+              <h4 class="text-xl font-bold mb-2">Snickers Bar</h4>
+              <p class="text-gray-600 text-sm mb-3">Milk chocolate, nougat, caramel, and peanuts.</p>
+            </div>
+            <div>
+              <p class="font-bold text-green-700 text-lg mb-3">$2.19</p>
+              <div class="mt-2 flex flex-wrap gap-2 justify-center">
+                <span class="diet-tag tag-chocolate">Chocolate</span>
+                <span class="diet-tag tag-peanuts">Peanuts</span>
+                <span class="diet-tag tag-candy">Candy</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 8: KitKat -->
+        <div class="bg-white p-6 rounded-lg shadow-lg menu-card flex flex-col">
+          <div class="image-slider-wrapper">
+            <div class="image-slider">
+              <img src="images/KitKat.png" alt="KitKat Image 1">
+            </div>
+            <div class="slider-dots"></div>
+          </div>
+          <div class="flex-grow flex flex-col justify-between pt-4">
+            <div>
+              <h4 class="text-xl font-bold mb-2">KitKat</h4>
+              <p class="text-gray-600 text-sm mb-3">Crisp wafer in milk chocolate.</p>
+            </div>
+            <div>
+              <p class="font-bold text-green-700 text-lg mb-3">$2.19</p>
+              <div class="mt-2 flex flex-wrap gap-2 justify-center">
+                <span class="diet-tag tag-chocolate">Chocolate</span>
+                <span class="diet-tag tag-wafer">Wafer</span>
+                <span class="diet-tag tag-candy">Candy</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 9: Clif Bars -->
+        <div class="bg-white p-6 rounded-lg shadow-lg menu-card flex flex-col">
+          <div class="image-slider-wrapper">
+            <div class="image-slider">
+              <img src="images/Cliff_Bar1.png" alt="Clif Bars Image 1">
+              <img src="images/Cliff_Bar2.png" alt="Clif Bars Image 2">
+            </div>
+            <div class="slider-dots"></div>
+          </div>
+          <div class="flex-grow flex flex-col justify-between pt-4">
+            <div>
+              <h4 class="text-xl font-bold mb-2">Clif Bars</h4>
+              <p class="text-gray-600 text-sm mb-3">Energy bar made with wholesome, organic rolled oats.</p>
+            </div>
+            <div>
+              <p class="font-bold text-green-700 text-lg mb-3">$3.00</p>
+              <div class="mt-2 flex flex-wrap gap-2 justify-center">
+                <span class="diet-tag tag-energy-bar">Energy Bar</span>
+                <span class="diet-tag tag-good-source-fiber">Good Source of Fiber</span>
+                <span class="diet-tag tag-organic">Organic</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 10: All Chips -->
+        <div class="bg-white p-6 rounded-lg shadow-lg menu-card flex flex-col">
+          <div class="image-slider-wrapper">
+            <div class="image-slider">
+              <img src="images/Chips_Bag.png" alt="All Chips Image 1">
+            </div>
+            <div class="slider-dots"></div>
+          </div>
+          <div class="flex-grow flex flex-col justify-between pt-4">
+            <div>
+              <h4 class="text-xl font-bold mb-2">All Chips</h4>
+              <p class="text-gray-600 text-sm mb-3">1 oz snack bag of classic salted potato chips.</p>
+            </div>
+            <div>
+              <p class="font-bold text-green-700 text-lg mb-3">$1.49</p>
+              <div class="mt-2 flex flex-wrap gap-2 justify-center">
+                <span class="diet-tag tag-salty-snack">Salty Snack</span>
+                <span class="diet-tag tag-gluten-free">Gluten-Free</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 11: Chobani Yogurt -->
+        <div class="bg-white p-6 rounded-lg shadow-lg menu-card flex flex-col">
+          <div class="image-slider-wrapper">
+            <div class="image-slider">
+              <img src="images/Chobani_Yogurt1.png" alt="Chobani Yogurt Image 1">
+              <img src="images/Chobani_Yogurt2.png" alt="Chobani Yogurt Image 2">
+              <img src="images/Chobani_Yogurt3.png" alt="Chobani Yogurt Image 3">
+            </div>
+            <div class="slider-dots"></div>
+          </div>
+          <div class="flex-grow flex flex-col justify-between pt-4">
+            <div>
+              <h4 class="text-xl font-bold mb-2">Chobani Nonfat Greek Yogurt</h4>
+              <p class="text-gray-600 text-sm mb-3">Triple-strained Greek yogurt, thick, creamy, and high in protein.
+              </p>
+            </div>
+            <div>
+              <p class="font-bold text-green-700 text-lg mb-3">$3.29</p>
+              <div class="mt-2 flex flex-wrap gap-2 justify-center">
+                <span class="diet-tag tag-high-protein">High Protein</span>
+                <span class="diet-tag tag-greek-yogurt">Greek Yogurt</span>
+                <span class="diet-tag tag-nonfat">Nonfat</span>
+                <span class="diet-tag tag-calcium">Good Source of Calcium</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </section>
 
@@ -1212,7 +1175,6 @@
 
   <!-- Firebase SDKs -->
   <script type="module">
-    // Import the functions you need from the SDKs you need
     import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
     import { getFirestore, collection, onSnapshot, addDoc, doc, updateDoc, serverTimestamp, query, orderBy } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 

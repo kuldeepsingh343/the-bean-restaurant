@@ -1,7 +1,10 @@
-document.addEventListener('DOMContentLoaded', () => {
+// This event listener ensures the entire HTML document is loaded and ready before the script runs.
+// This prevents errors where the script tries to access elements that haven't been created yet.
+window.onload = function () {
+
     // --- Firebase Setup ---
     if (!window.db || !window.firebase?.firestore) {
-        console.error("Firebase is not initialized correctly.");
+        console.error("Firebase is not initialized correctly. Make sure the config script is in your HTML and is correct.");
         return;
     }
     const { db } = window;
@@ -24,111 +27,57 @@ document.addEventListener('DOMContentLoaded', () => {
     let allReviews = [];
 
     // --- Mobile Menu Logic ---
-    if (menuBtn) {
+    if (menuBtn && mobileMenu) {
         menuBtn.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
         });
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+        });
     }
-    document.querySelectorAll('#mobile-menu a').forEach(link => {
-        link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
-    });
 
-    // --- Image Slider Logic (CORRECTED) ---
+    // --- SMOOTHER Image Slider Logic ---
     function initializeSliders() {
-        document.querySelectorAll('.image-slider').forEach(slider => {
-            const slidesContainer = slider.querySelector('.slider-slides');
-            const dotsContainer = slider.querySelector('.slider-dots');
-            const images = slidesContainer.querySelectorAll('img');
+        document.querySelectorAll('.image-slider-wrapper').forEach(wrapper => {
+            const slider = wrapper.querySelector('.image-slider');
+            // This check prevents the script from crashing if a slider isn't found.
+            if (!slider) {
+                return;
+            }
+
+            const dotsContainer = wrapper.querySelector('.slider-dots');
+            const images = slider.querySelectorAll('img');
             const imageCount = images.length;
 
-            if (imageCount <= 1) return;
+            if (imageCount <= 1 || !dotsContainer) return;
 
             // --- Create Dots ---
-            dotsContainer.innerHTML = ''; // Clear any existing dots
+            dotsContainer.innerHTML = '';
             for (let i = 0; i < imageCount; i++) {
                 const dot = document.createElement('span');
                 dot.classList.add('slider-dot');
                 if (i === 0) dot.classList.add('active');
                 dot.addEventListener('click', () => {
-                    goToSlide(i, true); // Go to slide with transition
+                    const slideWidth = slider.offsetWidth;
+                    slider.scrollTo({ left: i * slideWidth, behavior: 'smooth' });
                 });
                 dotsContainer.appendChild(dot);
             }
             const dots = dotsContainer.querySelectorAll('.slider-dot');
 
-            let currentIndex = 0;
-            let startX = 0;
-            let currentTranslate = 0;
-            let prevTranslate = 0;
-            let isDragging = false;
-            let animationFrameId;
+            // --- Update Dots on Scroll ---
+            let scrollTimer = null;
+            slider.addEventListener('scroll', () => {
+                if (scrollTimer) clearTimeout(scrollTimer);
+                scrollTimer = setTimeout(() => {
+                    const slideWidth = slider.offsetWidth;
+                    const currentIndex = Math.round(slider.scrollLeft / slideWidth);
 
-            function goToSlide(index, withTransition = false) {
-                if (withTransition) slidesContainer.style.transition = 'transform 0.5s ease-in-out';
-                currentTranslate = -index * slider.offsetWidth;
-                prevTranslate = currentTranslate;
-                slidesContainer.style.transform = `translateX(${currentTranslate}px)`;
-
-                dots.forEach(d => d.classList.remove('active'));
-                if (dots[index]) dots[index].classList.add('active');
-                currentIndex = index;
-            }
-
-            function dragStart(e) {
-                isDragging = true;
-                startX = getPositionX(e);
-                animationFrameId = requestAnimationFrame(animationLoop);
-                slidesContainer.style.transition = 'none'; // Disable transition while dragging
-                slider.classList.add('grabbing');
-            }
-
-            function drag(e) {
-                if (isDragging) {
-                    const currentPosition = getPositionX(e);
-                    currentTranslate = prevTranslate + currentPosition - startX;
-                }
-            }
-
-            function dragEnd(e) {
-                if (!isDragging) return;
-                cancelAnimationFrame(animationFrameId);
-                isDragging = false;
-                const movedBy = currentTranslate - prevTranslate;
-                const threshold = slider.offsetWidth / 4;
-
-                if (movedBy < -threshold && currentIndex < imageCount - 1) {
-                    currentIndex++;
-                }
-                if (movedBy > threshold && currentIndex > 0) {
-                    currentIndex--;
-                }
-
-                goToSlide(currentIndex, true);
-                slider.classList.remove('grabbing');
-            }
-
-            function getPositionX(e) {
-                return e.type.includes('mouse') ? e.pageX : e.touches[0].clientX;
-            }
-
-            function animationLoop() {
-                if (isDragging) {
-                    slidesContainer.style.transform = `translateX(${currentTranslate}px)`;
-                    requestAnimationFrame(animationLoop);
-                }
-            }
-
-            // Event Listeners
-            slider.addEventListener('mousedown', dragStart);
-            slider.addEventListener('mouseup', dragEnd);
-            slider.addEventListener('mouseleave', dragEnd);
-            slider.addEventListener('mousemove', drag);
-            slider.addEventListener('touchstart', dragStart, { passive: true });
-            slider.addEventListener('touchend', dragEnd);
-            slider.addEventListener('touchmove', drag, { passive: true });
-
-            // Prevent default drag behavior on images
-            images.forEach(img => img.addEventListener('dragstart', (e) => e.preventDefault()));
+                    dots.forEach((dot, index) => {
+                        dot.classList.toggle('active', index === currentIndex);
+                    });
+                }, 100);
+            });
         });
     }
 
@@ -252,7 +201,7 @@ document.addEventListener('DOMContentLoaded', () => {
             renderReviews();
         }, (error) => {
             console.error("Error fetching reviews:", error);
-            if (reviewsContainer) reviewsContainer.innerHTML = '<p class="text-center text-red-500 font-bold">Could not load reviews. Please check your connection or security rules.</p>';
+            if (reviewsContainer) reviewsContainer.innerHTML = '<p class="text-center text-red-500 font-bold">Could not load reviews. Please check your connection or security rules and ensure the necessary index is created in Firestore.</p>';
         });
     } catch (error) {
         console.error("Firestore query failed:", error);
@@ -394,5 +343,5 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(section);
     });
 
-});
+};
 
