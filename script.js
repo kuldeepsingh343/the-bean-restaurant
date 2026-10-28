@@ -117,25 +117,25 @@ window.onload = function () {
         reviewsContainer.innerHTML = allReviews.length === 0 ? '<p class="text-center text-gray-500">Be the first to leave a review!</p>' : allReviews.map(review => `
             <div class="bg-white p-6 rounded-lg shadow-md mb-6 border-l-4 border-green-500 review-item">
                 <div class="flex justify-between items-center mb-2 flex-wrap">
-                    <h4 class="text-lg font-bold mr-4">${review.name ? review.name.replace(/</g, "&lt;") : 'Anonymous'}</h4>
-                    <div class="text-yellow-500 text-xl">${'&#9733;'.repeat(review.rating)}${'&#9734;'.repeat(5 - review.rating)}</div>
+                    <h4 class="text-lg font-bold mr-4">${review.name ? review.name.replace(/</g, "<") : 'Anonymous'}</h4>
+                    <div class="text-yellow-500 text-xl">${'★'.repeat(review.rating)}${'☆'.repeat(5 - review.rating)}</div>
                 </div>
-                <p class="text-gray-700 mb-4">${review.text ? review.text.replace(/</g, "&lt;") : ''}</p>
+                <p class="text-gray-700 mb-4">${review.text ? review.text.replace(/</g, "<") : ''}</p>
                 <div class="text-sm text-gray-400">${review.createdAt ? new Date(review.createdAt.seconds * 1000).toLocaleString() : 'Just now'}</div>
                 
                 <div class="mt-4 pl-4 border-l-2 border-gray-200" id="replies-${review.id}">${renderReplies(review.replies)}</div>
                 
                 <form class="reply-form mt-4" data-review-id="${review.id}">
                      <div class="flex gap-2">
-                        <input type="text" placeholder="Your Name" class="w-1/3 p-2 border border-gray-300 rounded-lg text-sm" required>
-                        <input type="text" placeholder="Write a reply..." class="flex-grow p-2 border border-gray-300 rounded-lg text-sm" required>
+                        <input type="text" placeholder="Your Name" class="reply-name w-1/3 p-2 border border-gray-300 rounded-lg text-sm" required>
+                        <input type="text" placeholder="Write a reply..." class="reply-text flex-grow p-2 border border-gray-300 rounded-lg text-sm" required>
                         <button type="submit" class="bg-gray-200 text-gray-700 font-semibold py-2 px-3 rounded-lg hover:bg-gray-300 text-sm">Reply</button>
                     </div>
                 </form>
 
                 <div class="mt-3 text-right">
                     <button class="suggest-reply-btn bg-green-100 text-green-800 text-xs font-semibold py-1 px-3 rounded-full hover:bg-green-200 transition" 
-                        data-review-text="${review.text ? review.text.replace(/"/g, '&quot;') : ''}" 
+                        data-review-text="${review.text ? review.text.replace(/"/g, '"') : ''}" 
                         data-review-rating="${review.rating}">
                         ✨ Suggest Reply
                     </button>
@@ -151,8 +151,8 @@ window.onload = function () {
     function renderReplies(replies) {
         return (replies || []).map(reply => `
             <div class="bg-gray-50 p-3 rounded-md mb-2">
-                <p class="font-semibold text-gray-800">${reply.name ? reply.name.replace(/</g, "&lt;") : 'Anonymous'}</p>
-                <p class="text-gray-700">${reply.text ? reply.text.replace(/</g, "&lt;") : ''}</p>
+                <p class="font-semibold text-gray-800">${reply.name ? reply.name.replace(/</g, "<") : 'Anonymous'}</p>
+                <p class="text-gray-700">${reply.text ? reply.text.replace(/</g, "<") : ''}</p>
             </div>
         `).join('');
     }
@@ -176,7 +176,7 @@ window.onload = function () {
         reviewSummary.innerHTML = `
         <div class="flex items-center justify-center mb-4">
              <span class="text-3xl font-bold text-gray-800 mr-2">${averageRating}</span>
-             <div class="text-yellow-500 text-2xl">${'&#9733;'.repeat(Math.round(averageRating))}${'&#9734;'.repeat(5 - Math.round(averageRating))}</div>
+             <div class="text-yellow-500 text-2xl">${'★'.repeat(Math.round(averageRating))}${'☆'.repeat(5 - Math.round(averageRating))}</div>
              <span class="ml-2 text-gray-500">(${allReviews.length} reviews)</span>
         </div>
         ` +
@@ -256,11 +256,17 @@ window.onload = function () {
                 const replyButton = this.querySelector('button[type="submit"]');
 
                 if (reviewToUpdate) {
+                    const nameInput = this.querySelector('.reply-name');
+                    const textInput = this.querySelector('.reply-text');
+
+                    if (!nameInput || !textInput) return;
+
                     replyButton.disabled = true;
+                    replyButton.textContent = "Posting...";
 
                     const newReply = {
-                        name: this.querySelector('input[type="text"]').value,
-                        text: this.querySelectorAll('input[type="text"]')[1].value
+                        name: nameInput.value.trim() || 'Anonymous',
+                        text: textInput.value.trim()
                     };
 
                     const updatedReplies = [...(reviewToUpdate.replies || []), newReply];
@@ -268,10 +274,13 @@ window.onload = function () {
 
                     try {
                         await updateDoc(reviewRef, { replies: updatedReplies });
+                        form.reset();
                     } catch (error) {
                         console.error("Error adding reply: ", error);
-                        alert("Sorry, couldn't add your reply. This feature may be restricted.");
+                        alert("Sorry, couldn't add your reply. Please check your Firestore rules.");
+                    } finally {
                         replyButton.disabled = false;
+                        replyButton.textContent = "Reply";
                     }
                 }
             });
@@ -284,7 +293,7 @@ window.onload = function () {
             button.dataset.listenerAttached = 'true';
             button.addEventListener('click', async (e) => {
                 const btn = e.currentTarget;
-                const replyInput = btn.closest('.review-item').querySelector('.reply-form input:nth-of-type(2)');
+                const replyInput = btn.closest('.review-item').querySelector('.reply-form .reply-text');
                 if (!replyInput) return;
 
                 const originalButtonText = btn.innerHTML;
@@ -344,4 +353,3 @@ window.onload = function () {
     });
 
 };
-
