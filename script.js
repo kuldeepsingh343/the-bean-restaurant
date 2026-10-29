@@ -8,8 +8,9 @@ window.onload = function () {
         return;
     }
     const { db } = window;
-    const { collection, onSnapshot, addDoc, doc, updateDoc, arrayUnion, serverTimestamp, query, orderBy } = window.firebase.firestore;
+    const { collection, onSnapshot, addDoc, doc, query, orderBy } = window.firebase.firestore;
     const reviewsCollection = collection(db, "reviews");
+    const productsCollection = collection(db, "products");
 
     // --- Gemini API ---
     const GEMINI_API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=`;
@@ -25,6 +26,77 @@ window.onload = function () {
     const summaryContainer = document.getElementById('summary-container');
 
     let allReviews = [];
+    let allProducts = [];
+
+    const MENU_THEMES = [
+        'bg-green-50', 'bg-pink-100', 'bg-blue-100', 'bg-rose-100',
+        'bg-yellow-100', 'bg-red-100', 'bg-orange-100', 'bg-gray-50'
+    ];
+
+    function escapeHtml(value) {
+        return String(value ?? '')
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#039;');
+    }
+
+    function formatDate(value) {
+        if (!value) return 'Just now';
+        if (typeof value.toDate === 'function') return value.toDate().toLocaleString();
+        if (value.seconds) return new Date(value.seconds * 1000).toLocaleString();
+        const parsed = new Date(value);
+        return Number.isNaN(parsed.getTime()) ? 'Just now' : parsed.toLocaleString();
+    }
+
+    function dietaryBadge(dietary) {
+        if (dietary === 'Vegan') return '<span data-tooltip="Vegan">💚</span>';
+        if (dietary === 'Vegetarian') return '<span data-tooltip="Vegetarian">🌿</span>';
+        if (dietary === 'Halal') return '<span class="halal"></span>';
+        return '';
+    }
+
+    function renderProducts() {
+        if (!allProducts.length) return;
+
+        document.querySelectorAll('main > section[id]').forEach(section => {
+            const sectionProducts = allProducts
+                .filter(product => product.category === section.id)
+                .sort((a, b) => (a.sortOrder ?? 0) - (b.sortOrder ?? 0));
+            const legacyGrids = section.querySelectorAll('.grid:not([data-dynamic-menu-grid])');
+            let dynamicGrid = section.querySelector('[data-dynamic-menu-grid]');
+
+            if (!dynamicGrid) {
+                dynamicGrid = document.createElement('div');
+                dynamicGrid.dataset.dynamicMenuGrid = 'true';
+                dynamicGrid.className = 'grid md:grid-cols-2 lg:grid-cols-3 gap-8';
+                section.insertBefore(dynamicGrid, section.querySelector('.grid'));
+            }
+
+            if (!sectionProducts.length) {
+                dynamicGrid.classList.add('hidden');
+                legacyGrids.forEach(grid => grid.classList.remove('hidden'));
+                return;
+            }
+
+            legacyGrids.forEach(grid => grid.classList.add('hidden'));
+            dynamicGrid.classList.remove('hidden');
+            dynamicGrid.innerHTML = sectionProducts.map(product => {
+                const theme = MENU_THEMES.includes(product.themeClass) ? product.themeClass : 'bg-green-50';
+                const image = product.image ? `
+                    <img src="${escapeHtml(product.image)}" alt="${escapeHtml(product.name)}"
+                        class="w-full h-48 object-contain mb-4 mx-auto">` : '';
+                const imageLayout = image ? 'text-center' : '';
+                return `
+                    <div class="${theme} p-6 rounded-lg shadow-lg menu-card ${imageLayout}">
+                        ${image}
+                        <h3 class="text-xl font-bold mb-2">${escapeHtml(product.name)} ${dietaryBadge(product.dietary)}</h3>
+                        <p class="text-gray-600">${escapeHtml(product.ingredients)}${product.price ? `<br><span class="font-semibold text-green-700">${escapeHtml(product.price)}</span>` : ''}</p>
+                    </div>`;
+            }).join('');
+        });
+    }
 
     // --- Mobile Menu Logic ---
     if (menuBtn && mobileMenu) {
@@ -117,42 +189,27 @@ window.onload = function () {
         reviewsContainer.innerHTML = allReviews.length === 0 ? '<p class="text-center text-gray-500">Be the first to leave a review!</p>' : allReviews.map(review => `
             <div class="bg-white p-6 rounded-lg shadow-md mb-6 border-l-4 border-green-500 review-item">
                 <div class="flex justify-between items-center mb-2 flex-wrap">
-                    <h4 class="text-lg font-bold mr-4">${review.name ? review.name.replace(/</g, "<") : 'Anonymous'}</h4>
+                    <h4 class="text-lg font-bold mr-4">${escapeHtml(review.name || 'Anonymous')}</h4>
                     <div class="text-yellow-500 text-xl">${'★'.repeat(review.rating)}${'☆'.repeat(5 - review.rating)}</div>
                 </div>
-                <p class="text-gray-700 mb-4">${review.text ? review.text.replace(/</g, "<") : ''}</p>
-                <div class="text-sm text-gray-400">${review.createdAt ? new Date(review.createdAt.seconds * 1000).toLocaleString() : 'Just now'}</div>
+                <p class="text-gray-700 mb-4">${escapeHtml(review.text)}</p>
+                <div class="text-sm text-gray-400">${formatDate(review.createdAt)}</div>
                 
                 <div class="mt-4 pl-4 border-l-2 border-gray-200" id="replies-${review.id}">${renderReplies(review.replies)}</div>
-                
-                <form class="reply-form mt-4" data-review-id="${review.id}">
-                     <div class="flex gap-2">
-                        <input type="text" placeholder="Your Name" class="reply-name w-1/3 p-2 border border-gray-300 rounded-lg text-sm" required>
-                        <input type="text" placeholder="Write a reply..." class="reply-text flex-grow p-2 border border-gray-300 rounded-lg text-sm" required>
-                        <button type="submit" class="bg-gray-200 text-gray-700 font-semibold py-2 px-3 rounded-lg hover:bg-gray-300 text-sm">Reply</button>
-                    </div>
-                </form>
-
-                <div class="mt-3 text-right">
-                    <button class="suggest-reply-btn bg-green-100 text-green-800 text-xs font-semibold py-1 px-3 rounded-full hover:bg-green-200 transition" 
-                        data-review-text="${review.text ? review.text.replace(/"/g, '"') : ''}" 
-                        data-review-rating="${review.rating}">
-                        ✨ Suggest Reply
-                    </button>
-                </div>
             </div>
         `).join('');
 
         updateReviewSummary();
-        attachReplyHandlers();
-        attachAIFeatureHandlers();
     }
 
     function renderReplies(replies) {
         return (replies || []).map(reply => `
-            <div class="bg-gray-50 p-3 rounded-md mb-2">
-                <p class="font-semibold text-gray-800">${reply.name ? reply.name.replace(/</g, "<") : 'Anonymous'}</p>
-                <p class="text-gray-700">${reply.text ? reply.text.replace(/</g, "<") : ''}</p>
+            <div class="${reply.isAdmin || reply.name === 'Admin-Bean Cafe' ? 'admin-reply' : 'bg-gray-50'} p-3 rounded-md mb-2">
+                <div class="flex items-center gap-2 mb-1">
+                    <p class="font-semibold ${reply.isAdmin || reply.name === 'Admin-Bean Cafe' ? 'text-green-900' : 'text-gray-800'}">${escapeHtml(reply.name || 'Anonymous')}</p>
+                    ${reply.isAdmin || reply.name === 'Admin-Bean Cafe' ? '<span class="admin-reply-badge">Official response</span>' : ''}
+                </div>
+                <p class="text-gray-700">${escapeHtml(reply.text)}</p>
             </div>
         `).join('');
     }
@@ -208,6 +265,14 @@ window.onload = function () {
         if (reviewsContainer) reviewsContainer.innerHTML = '<p class="text-center text-red-500 font-bold">There was an error setting up the reviews listener.</p>';
     }
 
+    onSnapshot(productsCollection, (snapshot) => {
+        allProducts = snapshot.docs.map(productDoc => ({ id: productDoc.id, ...productDoc.data() }));
+        renderProducts();
+    }, (error) => {
+        // An empty products collection is supported as a fallback to the existing menu markup.
+        console.error("Error fetching managed products:", error);
+    });
+
 
     if (reviewForm) {
         reviewForm.addEventListener('submit', async (e) => {
@@ -244,76 +309,7 @@ window.onload = function () {
         });
     }
 
-    function attachReplyHandlers() {
-        document.querySelectorAll('.reply-form').forEach(form => {
-            if (form.dataset.listener) return;
-            form.dataset.listener = 'true';
-
-            form.addEventListener('submit', async function (e) {
-                e.preventDefault();
-                const reviewId = this.dataset.reviewId;
-                const reviewToUpdate = allReviews.find(r => r.id === reviewId);
-                const replyButton = this.querySelector('button[type="submit"]');
-
-                if (reviewToUpdate) {
-                    const nameInput = this.querySelector('.reply-name');
-                    const textInput = this.querySelector('.reply-text');
-
-                    if (!nameInput || !textInput) return;
-
-                    replyButton.disabled = true;
-                    replyButton.textContent = "Posting...";
-
-                    const newReply = {
-                        name: nameInput.value.trim() || 'Anonymous',
-                        text: textInput.value.trim()
-                    };
-
-                    const reviewRef = doc(db, "reviews", reviewId);
-
-                    try {
-                        // Atomically append the reply so two customers replying at
-                        // the same time cannot overwrite one another.
-                        await updateDoc(reviewRef, { replies: arrayUnion(newReply) });
-                        form.reset();
-                    } catch (error) {
-                        console.error("Error adding reply: ", error);
-                        if (error?.code === 'permission-denied') {
-                            alert("Replies are currently unavailable because Firestore is denying updates to reviews.");
-                        } else {
-                            alert("Sorry, we couldn't add your reply. Please try again.");
-                        }
-                    } finally {
-                        replyButton.disabled = false;
-                        replyButton.textContent = "Reply";
-                    }
-                }
-            });
-        });
-    }
-
     function attachAIFeatureHandlers() {
-        document.querySelectorAll('.suggest-reply-btn').forEach(button => {
-            if (button.dataset.listenerAttached) return;
-            button.dataset.listenerAttached = 'true';
-            button.addEventListener('click', async (e) => {
-                const btn = e.currentTarget;
-                const replyInput = btn.closest('.review-item').querySelector('.reply-form .reply-text');
-                if (!replyInput) return;
-
-                const originalButtonText = btn.innerHTML;
-                btn.disabled = true;
-                btn.innerHTML = '✨ Thinking...';
-
-                const prompt = `A customer left the following review for "The Bean":\n\nRating: ${btn.dataset.reviewRating} stars\nReview: "${btn.dataset.reviewText}"\n\nDraft a short, polite, professional response under 30 words. Thank positive reviewers or apologize to negative ones. Do not sign with a name.`;
-                const suggestedReply = await callGeminiAPI(prompt);
-
-                replyInput.value = suggestedReply.replace(/"/g, '');
-                btn.disabled = false;
-                btn.innerHTML = originalButtonText;
-            });
-        });
-
         if (summarizeBtn) {
             summarizeBtn.addEventListener('click', async () => {
                 if (allReviews.length < 2) {
@@ -336,6 +332,7 @@ window.onload = function () {
         }
     }
 
+    attachAIFeatureHandlers();
 
     // --- Scrollspy for Navigation ---
     const sections = document.querySelectorAll('section');

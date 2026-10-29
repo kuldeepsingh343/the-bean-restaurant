@@ -23,6 +23,25 @@ body {
     background-color: #16a34a;
 }
 
+/* Official restaurant replies */
+.admin-reply {
+    background: linear-gradient(135deg, #ecfdf5, #f0fdf4);
+    border: 1px solid #86efac;
+    border-left: 4px solid #15803d;
+}
+
+.admin-reply-badge {
+    display: inline-block;
+    padding: 0.15rem 0.5rem;
+    border-radius: 9999px;
+    background-color: #166534;
+    color: #ffffff;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+}
+
 /* Star Rating Styles */
 .star-rating {
     display: flex;

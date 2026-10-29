@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin | The Bean</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/png" href="images/Logo.png">
+</head>
+
+<body class="bg-green-50 text-gray-800 min-h-screen">
+  <header class="bg-green-800 text-white shadow-md">
+    <div class="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between gap-4">
+      <a href="index.html" class="flex items-center gap-3">
+        <img src="images/Logo.png" alt="The Bean logo" class="h-10 rounded-full bg-white">
+        <span class="text-2xl font-bold">The Bean Admin</span>
+      </a>
+      <a href="index.html" class="text-sm hover:text-green-200">Back to website</a>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-6 py-10">
+    <section id="login-panel" class="max-w-md mx-auto bg-white rounded-2xl shadow-lg p-8">
+      <h1 class="text-3xl font-bold text-green-800 mb-2">Admin login</h1>
+      <p class="text-gray-600 mb-6">Use the Firebase email and password created for the restaurant administrator.</p>
+      <form id="login-form" class="space-y-4">
+        <label class="block">
+          <span class="font-semibold">Email</span>
+          <input id="login-email" type="email" required autocomplete="email"
+            class="mt-1 w-full p-3 border border-gray-300 rounded-lg">
+        </label>
+        <label class="block">
+          <span class="font-semibold">Password</span>
+          <input id="login-password" type="password" required autocomplete="current-password"
+            class="mt-1 w-full p-3 border border-gray-300 rounded-lg">
+        </label>
+        <button class="w-full bg-green-700 hover:bg-green-800 text-white font-semibold py-3 rounded-lg" type="submit">
+          Sign in
+        </button>
+      </form>
+      <p id="login-message" class="mt-4 text-sm" role="status"></p>
+    </section>
+
+    <section id="admin-panel" class="hidden space-y-8">
+      <div class="bg-white rounded-2xl shadow-lg p-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+        <div>
+          <p class="text-sm text-gray-500">Signed in as</p>
+          <p id="admin-email" class="font-semibold"></p>
+        </div>
+        <div class="flex flex-wrap gap-3">
+          <button id="import-menu" class="bg-amber-500 hover:bg-amber-600 text-white font-semibold py-2 px-4 rounded-lg">
+            Import existing menu
+          </button>
+          <button id="logout" class="border border-gray-300 hover:bg-gray-100 font-semibold py-2 px-4 rounded-lg">
+            Sign out
+          </button>
+        </div>
+      </div>
+
+      <p id="admin-message" class="text-sm" role="status"></p>
+
+      <section class="bg-white rounded-2xl shadow-lg p-6">
+        <div class="flex items-center justify-between gap-4 mb-5">
+          <div>
+            <h2 class="text-2xl font-bold text-green-800">Menu products</h2>
+            <p class="text-gray-600">Add, edit, or remove dishes. Imported products keep the public menu styling.</p>
+          </div>
+          <button id="cancel-product" class="hidden text-sm text-gray-600 underline">Cancel edit</button>
+        </div>
+
+        <form id="product-form" class="grid md:grid-cols-2 gap-4 border border-green-100 rounded-xl p-4 mb-8">
+          <input id="product-id" type="hidden">
+          <label class="block">
+            <span class="font-semibold">Title</span>
+            <input id="product-name" type="text" required class="mt-1 w-full p-3 border border-gray-300 rounded-lg">
+          </label>
+          <label class="block">
+            <span class="font-semibold">Price</span>
+            <input id="product-price" type="text" placeholder="$6.99 or 12oz: $3.99 | 20oz: $4.99"
+              class="mt-1 w-full p-3 border border-gray-300 rounded-lg">
+          </label>
+          <label class="block md:col-span-2">
+            <span class="font-semibold">Ingredients / description</span>
+            <textarea id="product-ingredients" required rows="3"
+              class="mt-1 w-full p-3 border border-gray-300 rounded-lg"></textarea>
+          </label>
+          <label class="block">
+            <span class="font-semibold">Menu category</span>
+            <select id="product-category" required class="mt-1 w-full p-3 border border-gray-300 rounded-lg"></select>
+          </label>
+          <label class="block">
+            <span class="font-semibold">Dietary label</span>
+            <select id="product-dietary" class="mt-1 w-full p-3 border border-gray-300 rounded-lg">
+              <option value="">None</option>
+              <option value="Vegetarian">Vegetarian</option>
+              <option value="Vegan">Vegan</option>
+              <option value="Halal">Halal</option>
+            </select>
+          </label>
+          <label class="block">
+            <span class="font-semibold">Image path or URL <span class="font-normal text-gray-500">(optional)</span></span>
+            <input id="product-image" type="text" placeholder="images/new-dish.png"
+              class="mt-1 w-full p-3 border border-gray-300 rounded-lg">
+          </label>
+          <label class="block">
+            <span class="font-semibold">Card color</span>
+            <select id="product-theme" class="mt-1 w-full p-3 border border-gray-300 rounded-lg">
+              <option value="bg-green-50">Green</option>
+              <option value="bg-pink-100">Pink</option>
+              <option value="bg-blue-100">Blue</option>
+              <option value="bg-rose-100">Rose</option>
+              <option value="bg-yellow-100">Yellow</option>
+              <option value="bg-red-100">Red</option>
+              <option value="bg-orange-100">Orange</option>
+              <option value="bg-gray-50">Gray</option>
+            </select>
+          </label>
+          <label class="block">
+            <span class="font-semibold">Display order</span>
+            <input id="product-order" type="number" min="0" value="0"
+              class="mt-1 w-full p-3 border border-gray-300 rounded-lg">
+          </label>
+          <div class="md:col-span-2">
+            <button class="bg-green-700 hover:bg-green-800 text-white font-semibold py-3 px-5 rounded-lg" type="submit">
+              Save product
+            </button>
+          </div>
+        </form>
+
+        <div id="products-list" class="grid md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+      </section>
+
+      <section class="bg-white rounded-2xl shadow-lg p-6">
+        <h2 class="text-2xl font-bold text-green-800 mb-1">Customer reviews</h2>
+        <p class="text-gray-600 mb-5">Reply as <strong>Admin-Bean Cafe</strong>. Official replies will be styled differently on the public website.</p>
+        <div id="admin-reviews" class="space-y-5"></div>
+      </section>
+    </section>
+  </main>
+
+  <script type="module" src="admin.js"></script>
+</body>
+
+</html>
