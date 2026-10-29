@@ -8,7 +8,7 @@ window.onload = function () {
         return;
     }
     const { db } = window;
-    const { collection, onSnapshot, addDoc, doc, updateDoc, serverTimestamp, query, orderBy } = window.firebase.firestore;
+    const { collection, onSnapshot, addDoc, doc, updateDoc, arrayUnion, serverTimestamp, query, orderBy } = window.firebase.firestore;
     const reviewsCollection = collection(db, "reviews");
 
     // --- Gemini API ---
@@ -269,15 +269,20 @@ window.onload = function () {
                         text: textInput.value.trim()
                     };
 
-                    const updatedReplies = [...(reviewToUpdate.replies || []), newReply];
                     const reviewRef = doc(db, "reviews", reviewId);
 
                     try {
-                        await updateDoc(reviewRef, { replies: updatedReplies });
+                        // Atomically append the reply so two customers replying at
+                        // the same time cannot overwrite one another.
+                        await updateDoc(reviewRef, { replies: arrayUnion(newReply) });
                         form.reset();
                     } catch (error) {
                         console.error("Error adding reply: ", error);
-                        alert("Sorry, couldn't add your reply. Please check your Firestore rules.");
+                        if (error?.code === 'permission-denied') {
+                            alert("Replies are currently unavailable because Firestore is denying updates to reviews.");
+                        } else {
+                            alert("Sorry, we couldn't add your reply. Please try again.");
+                        }
                     } finally {
                         replyButton.disabled = false;
                         replyButton.textContent = "Reply";

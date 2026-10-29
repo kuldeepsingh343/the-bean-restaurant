@@ -1142,7 +1142,7 @@
   <!-- Firebase SDKs -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-    import { getFirestore, collection, onSnapshot, addDoc, doc, updateDoc, serverTimestamp, query, orderBy } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+    import { getFirestore, collection, onSnapshot, addDoc, doc, updateDoc, arrayUnion, serverTimestamp, query, orderBy } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
     // YOUR UNIQUE FIREBASE CONFIGURATION
     const firebaseConfig = {
@@ -1161,7 +1161,7 @@
     // Make the database instance and Firestore functions available to your script.js file
     window.db = db;
     window.firebase = {
-      firestore: { collection, onSnapshot, addDoc, doc, updateDoc, serverTimestamp, query, orderBy }
+      firestore: { collection, onSnapshot, addDoc, doc, updateDoc, arrayUnion, serverTimestamp, query, orderBy }
     };
   </script>
 
