@@ -57,6 +57,8 @@ const productsList = document.getElementById('products-list');
 const reviewsList = document.getElementById('admin-reviews');
 const categorySelect = document.getElementById('product-category');
 const cancelProductButton = document.getElementById('cancel-product');
+const imageUploadInput = document.getElementById('product-image-upload');
+const imageUploadStatus = document.getElementById('image-upload-status');
 
 let currentUser = null;
 let products = [];
@@ -96,6 +98,9 @@ function resetProductForm() {
   document.getElementById('product-id').value = '';
   document.getElementById('product-theme').value = 'bg-green-50';
   document.getElementById('product-order').value = '0';
+  document.getElementById('product-image-path').value = '';
+  imageUploadInput.value = '';
+  imageUploadStatus.textContent = '';
   cancelProductButton.classList.add('hidden');
 }
 
@@ -221,6 +226,60 @@ async function importExistingMenu() {
   showMessage(adminMessage, `Imported ${imported.length} existing menu products successfully.`);
 }
 
+function compressImage(file) {
+  return new Promise((resolve, reject) => {
+    const objectUrl = URL.createObjectURL(file);
+    const image = new Image();
+
+    image.onload = () => {
+      URL.revokeObjectURL(objectUrl);
+      const maxSide = 900;
+      const scale = Math.min(1, maxSide / image.width, maxSide / image.height);
+      const canvas = document.createElement('canvas');
+      canvas.width = Math.max(1, Math.round(image.width * scale));
+      canvas.height = Math.max(1, Math.round(image.height * scale));
+      const context = canvas.getContext('2d');
+      context.fillStyle = '#ffffff';
+      context.fillRect(0, 0, canvas.width, canvas.height);
+      context.drawImage(image, 0, 0, canvas.width, canvas.height);
+
+      const compressedImage = canvas.toDataURL('image/jpeg', 0.78);
+      if (compressedImage.length > 700000) {
+        reject(new Error('This image is still too large after compression. Please choose a smaller image.'));
+        return;
+      }
+      resolve(compressedImage);
+    };
+
+    image.onerror = () => {
+      URL.revokeObjectURL(objectUrl);
+      reject(new Error('The selected image could not be read.'));
+    };
+    image.src = objectUrl;
+  });
+}
+
+async function resolveProductImage() {
+  const selectedFile = imageUploadInput.files?.[0];
+  const typedImage = document.getElementById('product-image').value.trim();
+
+  if (!selectedFile) {
+    return typedImage;
+  }
+
+  if (!selectedFile.type.startsWith('image/')) {
+    throw new Error('Please choose an image file.');
+  }
+  if (selectedFile.size > 10 * 1024 * 1024) {
+    throw new Error('The original image must be 10 MB or smaller.');
+  }
+
+  imageUploadStatus.textContent = 'Compressing image...';
+  const compressedImage = await compressImage(selectedFile);
+  imageUploadStatus.textContent = 'Image ready. It will be used instead of the URL.';
+  return compressedImage;
+}
+
 loginForm.addEventListener('submit', async event => {
   event.preventDefault();
   const email = document.getElementById('login-email').value.trim();
@@ -249,18 +308,23 @@ document.getElementById('import-menu').addEventListener('click', async () => {
 productForm.addEventListener('submit', async event => {
   event.preventDefault();
   const productId = document.getElementById('product-id').value;
-  const product = {
-    name: document.getElementById('product-name').value.trim(),
-    ingredients: document.getElementById('product-ingredients').value.trim(),
-    price: document.getElementById('product-price').value.trim(),
-    category: document.getElementById('product-category').value,
-    dietary: document.getElementById('product-dietary').value,
-    image: document.getElementById('product-image').value.trim(),
-    themeClass: THEMES.includes(document.getElementById('product-theme').value) ? document.getElementById('product-theme').value : 'bg-green-50',
-    sortOrder: Number(document.getElementById('product-order').value) || 0
-  };
+  const saveButton = productForm.querySelector('button[type="submit"]');
 
   try {
+    saveButton.disabled = true;
+    saveButton.textContent = 'Saving...';
+    const image = await resolveProductImage();
+    const product = {
+      name: document.getElementById('product-name').value.trim(),
+      ingredients: document.getElementById('product-ingredients').value.trim(),
+      price: document.getElementById('product-price').value.trim(),
+      category: document.getElementById('product-category').value,
+      dietary: document.getElementById('product-dietary').value,
+      image,
+      themeClass: THEMES.includes(document.getElementById('product-theme').value) ? document.getElementById('product-theme').value : 'bg-green-50',
+      sortOrder: Number(document.getElementById('product-order').value) || 0
+    };
+
     if (productId) {
       await updateDoc(doc(db, 'products', productId), product);
       showMessage(adminMessage, 'Product updated.');
@@ -271,7 +335,10 @@ productForm.addEventListener('submit', async event => {
     resetProductForm();
   } catch (error) {
     console.error(error);
-    showMessage(adminMessage, 'Could not save the product. Check the Firestore rules.', true);
+    showMessage(adminMessage, error.message || 'Could not save the product. Check Firebase Storage and Firestore rules.', true);
+  } finally {
+    saveButton.disabled = false;
+    saveButton.textContent = 'Save product';
   }
 });
 
@@ -291,6 +358,9 @@ productsList.addEventListener('click', async event => {
     document.getElementById('product-category').value = product.category || 'breakfast';
     document.getElementById('product-dietary').value = product.dietary || '';
     document.getElementById('product-image').value = product.image || '';
+    document.getElementById('product-image-path').value = '';
+    imageUploadInput.value = '';
+    imageUploadStatus.textContent = '';
     document.getElementById('product-theme').value = THEMES.includes(product.themeClass) ? product.themeClass : 'bg-green-50';
     document.getElementById('product-order').value = product.sortOrder || 0;
     cancelProductButton.classList.remove('hidden');

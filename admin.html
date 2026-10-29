@@ -100,10 +100,17 @@
               <option value="Halal">Halal</option>
             </select>
           </label>
-          <label class="block">
-            <span class="font-semibold">Image path or URL <span class="font-normal text-gray-500">(optional)</span></span>
-            <input id="product-image" type="text" placeholder="images/new-dish.png"
+          <label class="block md:col-span-2">
+            <span class="font-semibold">Image URL or path <span class="font-normal text-gray-500">(optional)</span></span>
+            <input id="product-image" type="text" placeholder="images/new-dish.png or https://..."
               class="mt-1 w-full p-3 border border-gray-300 rounded-lg">
+          </label>
+          <label class="block md:col-span-2">
+            <span class="font-semibold">Upload image <span class="font-normal text-gray-500">(optional, compressed for the free plan)</span></span>
+            <input id="product-image-upload" type="file" accept="image/*"
+              class="mt-1 w-full p-3 border border-gray-300 rounded-lg bg-white">
+            <input id="product-image-path" type="hidden">
+            <span id="image-upload-status" class="block mt-1 text-sm text-gray-500"></span>
           </label>
           <label class="block">
             <span class="font-semibold">Card color</span>
